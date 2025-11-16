@@ -19999,3 +19999,2699 @@
   level: 'info',
   message: 'GET /health/live'
 }
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:41:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:41:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:42:03',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:42:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:42:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:42:33',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36',
+  timestamp: '2025-11-16 18:42:41',
+  level: 'info',
+  message: 'GET /'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:42:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:42:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:43:03',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:43:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:43:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:43:33',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:43:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:43:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:44:03',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:44:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:44:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:44:33',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:44:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:44:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:45:03',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:45:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:45:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:45:34',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:45:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:45:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:46:04',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:46:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:46:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:46:34',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:46:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:46:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:47:04',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:47:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:47:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:47:34',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:47:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:47:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:48:04',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:48:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:48:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:48:34',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:48:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:48:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:49:04',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36',
+  timestamp: '2025-11-16 18:49:07',
+  level: 'info',
+  message: 'GET /test-nav'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36',
+  timestamp: '2025-11-16 18:49:10',
+  level: 'info',
+  message: 'GET /health'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36',
+  timestamp: '2025-11-16 18:49:10',
+  level: 'info',
+  message: 'GET /monitoring-status'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:49:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:49:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:49:34',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:49:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:49:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:50:04',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:50:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:50:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:50:34',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:50:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:50:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:51:04',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:51:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:51:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:51:35',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:51:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:51:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:52:05',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:52:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:52:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36',
+  timestamp: '2025-11-16 18:52:35',
+  level: 'info',
+  message: 'GET /health'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:52:35',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36',
+  timestamp: '2025-11-16 18:52:36',
+  level: 'info',
+  message: 'GET /monitoring-status'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:52:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:52:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:53:05',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:53:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:53:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:53:35',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:53:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:53:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:54:05',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:54:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:54:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:54:35',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:54:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:54:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:55:05',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:55:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:55:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:55:36',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:55:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:55:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:56:06',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:56:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:56:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:56:36',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:56:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:56:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:57:06',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:57:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:57:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:57:36',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:57:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:57:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:58:06',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:58:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:58:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:58:36',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:58:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:58:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:59:06',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:59:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:59:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 18:59:36',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:59:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 18:59:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:00:06',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:00:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:00:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:00:36',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:00:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:00:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:01:07',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:01:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:01:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:01:37',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:01:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:01:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:02:07',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:02:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:02:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:02:37',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:02:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:02:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:03:07',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:03:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:03:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:03:37',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:03:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:03:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:04:07',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:04:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:04:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:04:37',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:04:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:04:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:05:07',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:05:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:05:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:05:37',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:05:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:05:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:06:08',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:06:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:06:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:06:38',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:06:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:06:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:07:08',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:07:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:07:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:07:38',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:07:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:07:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:08:08',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:08:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:08:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:08:38',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:08:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:08:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:09:08',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:09:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:09:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:09:39',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:09:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:09:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:10:09',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:10:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:10:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:10:39',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:10:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:10:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:11:09',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:11:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:11:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:11:39',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:11:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:11:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:12:09',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:12:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:12:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:12:39',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:12:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:12:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:13:09',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:13:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:13:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:13:39',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:13:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:13:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:14:09',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:14:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:14:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:14:40',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:14:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:14:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:15:10',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:15:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:15:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:15:40',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:15:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:15:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:16:10',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:16:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:16:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:16:40',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:16:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:16:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:17:10',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:17:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:17:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:17:40',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:17:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:17:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:18:10',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:18:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:18:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:18:40',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:18:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:18:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:19:10',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:19:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:19:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:19:40',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:19:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:19:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:20:11',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:20:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:20:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:20:41',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:20:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:20:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:21:11',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:21:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:21:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:21:41',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:21:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:21:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:22:11',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:22:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:22:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:22:41',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:22:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:22:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:23:11',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:23:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:23:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:23:41',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:23:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:23:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:24:11',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:24:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:24:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:24:42',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:24:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:24:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:25:12',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:25:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:25:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:25:42',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:25:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:25:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:26:12',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:26:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:26:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:26:42',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:26:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:26:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:27:12',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:27:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:27:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:27:42',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:27:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:27:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:28:12',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:28:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:28:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:28:42',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:28:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:28:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:29:12',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:29:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:29:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:29:42',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:29:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:29:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:30:13',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:30:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:30:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:30:43',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:30:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:30:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:31:13',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:31:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:31:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:31:43',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:31:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:31:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:32:13',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:32:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:32:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:32:43',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:32:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:32:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:33:13',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:33:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:33:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:33:43',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:33:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:33:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:34:13',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:34:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:34:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:34:44',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:34:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:34:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:35:14',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:35:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:35:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:35:44',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:35:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:35:59',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:36:14',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:36:14',
+  level: 'info',
+  message: 'GET /health/live'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:36:29',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::ffff:192.168.65.1',
+  userAgent: 'Prometheus/2.47.2',
+  timestamp: '2025-11-16 19:36:44',
+  level: 'info',
+  message: 'GET /metrics'
+}
+{
+  service: 'electrode-server',
+  ip: '::1',
+  userAgent: 'curl/8.14.1',
+  timestamp: '2025-11-16 19:36:44',
+  level: 'info',
+  message: 'GET /health/live'
+}
