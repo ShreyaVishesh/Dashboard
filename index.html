@@ -1,820 +1,950 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚡ Electrode - Energy Trading Dashboard</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: #f1f5f9;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        .dashboard-container {
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            grid-template-rows: auto 1fr;
-            min-height: 100vh;
-        }
-
-        /* Loading Screen */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            opacity: 1;
-            transition: opacity 0.5s ease;
-        }
-
-        .loading-screen.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .loading-content {
-            text-align: center;
-        }
-
-        .loading-logo {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            animation: pulse 2s infinite;
-        }
-
-        .loading-text {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            background: linear-gradient(45deg, #06b6d4, #10b981);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .progress-bar {
-            width: 300px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 2px;
-            overflow: hidden;
-            margin: 0 auto;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #06b6d4, #10b981);
-            width: 0%;
-            animation: loading 3s ease-in-out;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        @keyframes loading {
-            0% { width: 0%; }
-            50% { width: 70%; }
-            100% { width: 100%; }
-        }
-
-        /* Sidebar */
-        .sidebar {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(20px);
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2rem 0;
-            grid-row: 1 / -1;
-        }
-
-        .sidebar-header {
-            padding: 0 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .logo-icon {
-            font-size: 2rem;
-            background: linear-gradient(45deg, #06b6d4, #10b981);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-list {
-            list-style: none;
-            padding: 0 1rem;
-        }
-
-        .nav-item {
-            margin-bottom: 0.5rem;
-        }
-
-        .nav-link {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem 1rem;
-            color: #94a3b8;
-            text-decoration: none;
-            border-radius: 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            background: rgba(6, 182, 212, 0.1);
-            color: #06b6d4;
-        }
-
-        /* Header */
-        .header {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .header-left h1 {
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .header-stat {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-        }
-
-        /* Main Content */
-        .main-content {
-            padding: 2rem;
-            overflow-y: auto;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            backdrop-filter: blur(20px);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(6, 182, 212, 0.1);
-        }
-
-        .stat-header {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-        }
-
-        .stat-icon {
-            width: 3rem;
-            height: 3rem;
-            background: linear-gradient(45deg, #06b6d4, #10b981);
-            border-radius: 0.75rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
-        }
-
-        .stat-title {
-            font-size: 0.875rem;
-            color: #94a3b8;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #f1f5f9;
-        }
-
-        .stat-change {
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
-        }
-
-        .stat-change.positive {
-            color: #10b981;
-        }
-
-        .stat-change.negative {
-            color: #ef4444;
-        }
-
-        .widget-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .widget {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            backdrop-filter: blur(20px);
-        }
-
-        .widget-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 1.5rem;
-        }
-
-        .widget-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-
-        .btn {
-            background: linear-gradient(45deg, #06b6d4, #10b981);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
-        }
-
-        .chart-container {
-            position: relative;
-            height: 300px;
-        }
-
-        .activity-feed {
-            space-y: 1rem;
-        }
-
-        .activity-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 0.5rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .activity-icon {
-            width: 2.5rem;
-            height: 2.5rem;
-            background: linear-gradient(45deg, #06b6d4, #10b981);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-
-        .activity-content {
-            flex: 1;
-        }
-
-        .activity-title {
-            font-weight: 500;
-            margin-bottom: 0.25rem;
-        }
-
-        .activity-desc {
-            font-size: 0.875rem;
-            color: #94a3b8;
-        }
-
-        .activity-value {
-            font-weight: 600;
-            color: #10b981;
-        }
-
-        .trading-panel {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .trade-btn {
-            padding: 1rem;
-            border: 2px solid transparent;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .trade-btn.buy {
-            background: linear-gradient(45deg, #10b981, #059669);
-            color: white;
-        }
-
-        .trade-btn.sell {
-            background: linear-gradient(45deg, #ef4444, #dc2626);
-            color: white;
-        }
-
-        .trade-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        @media (max-width: 768px) {
-            .dashboard-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .sidebar {
-                display: none;
-            }
-            
-            .widget-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Loading Screen -->
-    <div id="loadingScreen" class="loading-screen">
-        <div class="loading-content">
-            <div class="loading-logo">⚡</div>
-            <div class="loading-text">Electrode</div>
-            <div class="loading-text" style="font-size: 1rem; margin-bottom: 2rem;">Initializing Energy Trading Platform...</div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Electrode - The complete software platform for microgrid owners to monitor, manage, and trade energy tokens with real-time visibility">
+        <meta name="keywords" content="electrode, microgrid management, energy token trading, smart controller, energy monitoring, microgrid software, india renewable energy">
+        
+        <title>Electrode | Microgrid Management & Energy Token Trading Platform</title>
+        
+        <!-- External Libraries -->
+        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+        
+        <!-- Custom Styles -->
+        <link rel="stylesheet" href="assets/css/microgrid-index.css?v=1116-enhanced">
+        
+        <!-- Favicon -->
+        <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    </head>
+    <body>
+        <!-- Loading Screen -->
+        <div id="loading-screen">
+            <div class="loader">
+                <div class="electrode-pulse"></div>
+                <div class="loading-text">Connecting to Electrode Platform...</div>
+                <div class="loading-progress">
+                    <div class="progress-bar"></div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="dashboard-container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <div class="logo">
-                    <span class="logo-icon">⚡</span>
-                    <span>Electrode</span>
+        <!-- Navigation -->
+        <nav class="navbar" id="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <div class="electrode-logo">
+                        <div class="logo-particle"></div>
+                        <div class="logo-particle"></div>
+                        <div class="logo-particle"></div>
+                    </div>
+                    <span class="logo-text">Electrode</span>
+                </div>
+                
+                <div class="nav-menu" id="nav-menu">
+                    <div class="nav-close" id="nav-close">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <ul class="nav-links">
+                        <li><a href="#home" class="nav-link active">Home</a></li>
+                        <li><a href="#platform" class="nav-link">Platform</a></li>
+                        <li><a href="#token-trading" class="nav-link">Token Trading</a></li>
+                        <li><a href="#monitoring" class="nav-link">Monitoring</a></li>
+                        <li><a href="#features" class="nav-link">Features</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                        <li><a href="dashboard-working.html" class="nav-link dashboard-link">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a></li>
+                        <li><a href="system-status.html" class="nav-link status-link">
+                            <i class="fas fa-heartbeat"></i> System Status
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-controls">
+                    <div class="theme-toggle" id="theme-toggle">
+                        <i class="fas fa-sun sun-icon"></i>
+                        <i class="fas fa-moon moon-icon"></i>
+                    </div>
+                    <div class="nav-toggle" id="nav-toggle">
+                        <i class="fas fa-bars"></i>
+                    </div>
                 </div>
             </div>
-            <nav>
-                <ul class="nav-list">
-                    <li class="nav-item">
-                        <a href="#overview" class="nav-link active">
-                            <i class="fas fa-tachometer-alt"></i>
-                            <span>Overview</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#trading" class="nav-link">
-                            <i class="fas fa-coins"></i>
-                            <span>Trading</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#portfolio" class="nav-link">
-                            <i class="fas fa-wallet"></i>
-                            <span>Portfolio</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#analytics" class="nav-link">
-                            <i class="fas fa-chart-line"></i>
-                            <span>Analytics</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/system-status.html" class="nav-link">
-                            <i class="fas fa-cog"></i>
-                            <span>System Status</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </aside>
-
-        <!-- Header -->
-        <header class="header">
-            <div class="header-left">
-                <h1>Energy Trading Dashboard</h1>
-            </div>
-            <div class="header-right">
-                <div class="header-stat">
-                    <i class="fas fa-coins"></i>
-                    <span id="tokenCount">1,247 Tokens</span>
-                </div>
-                <div class="header-stat">
-                    <i class="fas fa-dollar-sign"></i>
-                    <span id="portfolioValue">₹1,03,572</span>
-                </div>
-            </div>
-        </header>
+        </nav>
 
         <!-- Main Content -->
-        <main class="main-content">
-            <!-- Stats Grid -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <div class="stat-icon">
-                            <i class="fas fa-wallet"></i>
-                        </div>
-                        <div>
-                            <div class="stat-title">Portfolio Value</div>
-                        </div>
-                    </div>
-                    <div class="stat-value" id="portfolioValueMain">₹1,03,572</div>
-                    <div class="stat-change positive">+5.2% today</div>
+        <main>
+            <!-- Hero Section -->
+            <section id="home" class="hero">
+                <div class="hero-background">
+                    <div class="token-particles"></div>
+                    <div class="energy-grid"></div>
+                    <div class="trading-waves"></div>
                 </div>
-
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <div class="stat-icon">
-                            <i class="fas fa-bolt"></i>
+                
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="hero-badge">
+                            <i class="fas fa-coins"></i>
+                            <span>Energy Token Trading Platform</span>
                         </div>
-                        <div>
-                            <div class="stat-title">Energy Generated</div>
-                        </div>
-                    </div>
-                    <div class="stat-value" id="energyGenerated">12.8 kWh</div>
-                    <div class="stat-change positive">+89 tokens today</div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <div class="stat-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div>
-                            <div class="stat-title">Daily Revenue</div>
-                        </div>
-                    </div>
-                    <div class="stat-value" id="dailyRevenue">₹13,014</div>
-                    <div class="stat-change positive">+12.4% from yesterday</div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <div class="stat-icon">
-                            <i class="fas fa-tag"></i>
-                        </div>
-                        <div>
-                            <div class="stat-title">Current Price</div>
-                        </div>
-                    </div>
-                    <div class="stat-value" id="currentPrice">₹10.38</div>
-                    <div class="stat-change positive">+2.1% per token</div>
-                </div>
-            </div>
-
-            <!-- Widget Grid -->
-            <div class="widget-grid">
-                <!-- Trading Chart -->
-                <div class="widget">
-                    <div class="widget-header">
-                        <h3 class="widget-title">Live Price Chart</h3>
-                        <button class="btn" onclick="refreshChart()">
-                            <i class="fas fa-sync"></i> Refresh
-                        </button>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="priceChart"></canvas>
-                    </div>
-                    <div class="trading-panel">
-                        <button class="trade-btn buy" onclick="simulateTrade('buy')">
-                            <i class="fas fa-arrow-up"></i> Buy Energy
-                        </button>
-                        <button class="trade-btn sell" onclick="simulateTrade('sell')">
-                            <i class="fas fa-arrow-down"></i> Sell Energy
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Activity Feed -->
-                <div class="widget">
-                    <div class="widget-header">
-                        <h3 class="widget-title">Recent Activity</h3>
-                    </div>
-                    <div class="activity-feed" id="activityFeed">
-                        <div class="activity-item">
-                            <div class="activity-icon">
-                                <i class="fas fa-handshake"></i>
+                        <h1 class="hero-title">
+                            <span class="gradient-text">Electrode</span>
+                            <div class="title-subtitle">Your Microgrid Command Center</div>
+                        </h1>
+                        <p class="hero-subtitle">
+                            <span class="status-indicator-inline">
+                                <span class="status-dot online"></span>
+                                Live Trading Active
+                            </span>
+                            Supporting India's renewable energy mission with complete software platform designed for microgrid owners to 
+                            <strong class="highlight-text">monitor and manage</strong> their smart controller. 
+                            Real-time visibility into <strong class="highlight-text">energy token trading</strong>, 
+                            comprehensive tracking of incoming and outgoing requests, and all system activity 
+                            displayed in an organized, user-friendly interface.
+                        </p>
+                        
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <div class="stat-icon"><i class="fas fa-coins"></i></div>
+                                <div class="stat-value" data-target="2847">0</div>
+                                <div class="stat-label">Energy Tokens Traded</div>
                             </div>
-                            <div class="activity-content">
-                                <div class="activity-title">Trade Executed</div>
-                                <div class="activity-desc">Sold 50 tokens at market rate</div>
+                            <div class="stat-item">
+                                <div class="stat-icon"><i class="fas fa-exchange-alt"></i></div>
+                                <div class="stat-value" data-target="142">0</div>
+                                <div class="stat-label">Active Transactions</div>
                             </div>
-                            <div class="activity-value">+₹523</div>
+                            <div class="stat-item">
+                                <div class="stat-icon"><i class="fas fa-network-wired"></i></div>
+                                <div class="stat-value" data-target="278">0</div>
+                                <div class="stat-label">Connected Microgrids</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                                <div class="stat-value" data-target="99.9">0</div>
+                                <div class="stat-label">% Platform Uptime</div>
+                            </div>
                         </div>
-                        <div class="activity-item">
-                            <div class="activity-icon">
-                                <i class="fas fa-bolt"></i>
-                            </div>
-                            <div class="activity-content">
-                                <div class="activity-title">Energy Generated</div>
-                                <div class="activity-desc">Solar panels produced 25 kWh</div>
-                            </div>
-                            <div class="activity-value">+25 tokens</div>
+                        
+                        <div class="hero-actions">
+                            <a href="dashboard-working.html" class="btn btn-primary">
+                                <i class="fas fa-rocket"></i>
+                                Launch Platform
+                            </a>
+                            <button class="btn btn-secondary" onclick="scrollToSection('token-trading')">
+                                <i class="fas fa-coins"></i>
+                                Start Trading
+                            </button>
+                            <a href="system-status.html" class="btn btn-accent">
+                                <i class="fas fa-chart-line"></i>
+                                Live Monitoring
+                            </a>
                         </div>
-                        <div class="activity-item">
-                            <div class="activity-icon">
-                                <i class="fas fa-trending-up"></i>
+                    </div>
+                    
+                    <div class="hero-visual">
+                        <div class="platform-mockup">
+                            <div class="mockup-window">
+                                <div class="window-header">
+                                    <div class="window-controls">
+                                        <div class="control red"></div>
+                                        <div class="control yellow"></div>
+                                        <div class="control green"></div>
+                                    </div>
+                                    <div class="window-title">Electrode Trading Platform</div>
+                                </div>
+                                
+                                <div class="mockup-content">
+                                    <div class="trading-panel">
+                                        <div class="panel-header">
+                                            <h4>Energy Token Trading</h4>
+                                            <span class="live-indicator">
+                                                <span class="pulse-dot"></span>
+                                                LIVE
+                                            </span>
+                                        </div>
+                                        
+                                        <div class="trading-stats">
+                                            <div class="trading-stat">
+                                                <div class="stat-icon green"><i class="fas fa-arrow-up"></i></div>
+                                                <div class="stat-info">
+                                                    <div class="stat-number">+247</div>
+                                                    <div class="stat-desc">Tokens Sold</div>
+                                                </div>
+                                            </div>
+                                            <div class="trading-stat">
+                                                <div class="stat-icon blue"><i class="fas fa-arrow-down"></i></div>
+                                                <div class="stat-info">
+                                                    <div class="stat-number">+156</div>
+                                                    <div class="stat-desc">Tokens Bought</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="price-chart">
+                                            <div class="chart-line"></div>
+                                            <div class="chart-points">
+                                                <div class="point active"></div>
+                                                <div class="point"></div>
+                                                <div class="point"></div>
+                                                <div class="point"></div>
+                                                <div class="point"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="activity-feed">
+                                        <div class="feed-header">Recent Activity</div>
+                                        <div class="activity-item">
+                                            <div class="activity-icon"><i class="fas fa-bolt"></i></div>
+                                            <div class="activity-text">Energy surplus detected - Auto-selling 47 tokens</div>
+                                            <div class="activity-time">2m ago</div>
+                                        </div>
+                                        <div class="activity-item">
+                                            <div class="activity-icon"><i class="fas fa-handshake"></i></div>
+                                            <div class="activity-text">Trade completed with Microgrid #23</div>
+                                            <div class="activity-time">5m ago</div>
+                                        </div>
+                                        <div class="activity-item">
+                                            <div class="activity-icon"><i class="fas fa-shield-alt"></i></div>
+                                            <div class="activity-text">Smart contract verified successfully</div>
+                                            <div class="activity-time">8m ago</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="activity-content">
-                                <div class="activity-title">Price Alert</div>
-                                <div class="activity-desc">Token price increased 8%</div>
+                            
+                            <div class="floating-cards">
+                                <div class="float-card card-1">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Real-time Analytics</span>
+                                </div>
+                                <div class="float-card card-2">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Secure Trading</span>
+                                </div>
+                                <div class="float-card card-3">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>Mobile Ready</span>
+                                </div>
                             </div>
-                            <div class="activity-value">₹10.38</div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- System Status Widget -->
-            <div class="widget">
-                <div class="widget-header">
-                    <h3 class="widget-title">System Monitoring</h3>
-                    <button class="btn" onclick="window.open('/system-status.html', '_blank')">
-                        <i class="fas fa-external-link-alt"></i> Full Status
-                    </button>
+            <!-- Platform Overview Section -->
+            <section id="platform" class="platform-section">
+                <div class="container">
+                    <div class="platform-content">
+                        <div class="platform-visual">
+                            <div class="software-interface">
+                                <div class="interface-screens">
+                                    <div class="screen monitoring active">
+                                        <div class="screen-header">
+                                            <div class="screen-title">Real-time Monitoring</div>
+                                            <div class="screen-status">
+                                                <span class="status-dot pulse"></span>
+                                                Live
+                                            </div>
+                                        </div>
+                                        <div class="monitoring-grid">
+                                            <div class="monitor-widget">
+                                                <div class="widget-icon"><i class="fas fa-bolt"></i></div>
+                                                <div class="widget-value">2.4kW</div>
+                                                <div class="widget-label">Current Generation</div>
+                                            </div>
+                                            <div class="monitor-widget">
+                                                <div class="widget-icon"><i class="fas fa-coins"></i></div>
+                                                <div class="widget-value">47</div>
+                                                <div class="widget-label">Active Tokens</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="screen trading">
+                                        <div class="screen-header">
+                                            <div class="screen-title">Token Trading</div>
+                                            <div class="screen-status">
+                                                <span class="status-dot success"></span>
+                                                Automated
+                                            </div>
+                                        </div>
+                                        <div class="trading-activity">
+                                            <div class="trade-item">
+                                                <div class="trade-type sell">SELL</div>
+                                                <div class="trade-amount">15 tokens</div>
+                                                <div class="trade-price">₹10.0/kWh</div>
+                                            </div>
+                                            <div class="trade-item">
+                                                <div class="trade-type buy">BUY</div>
+                                                <div class="trade-amount">8 tokens</div>
+                                                <div class="trade-price">₹8.3/kWh</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="interface-tabs">
+                                    <div class="tab active" data-screen="monitoring">
+                                        <i class="fas fa-chart-line"></i>
+                                        <span>Monitor</span>
+                                    </div>
+                                    <div class="tab" data-screen="trading">
+                                        <i class="fas fa-exchange-alt"></i>
+                                        <span>Trade</span>
+                                    </div>
+                                    <div class="tab" data-screen="activity">
+                                        <i class="fas fa-history"></i>
+                                        <span>Activity</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="data-connections">
+                                <div class="connection-node microgrid">
+                                    <i class="fas fa-plug"></i>
+                                    <span>Smart Controller</span>
+                                </div>
+                                <div class="connection-flow">
+                                    <div class="flow-line"></div>
+                                    <div class="flow-data">Real-time Data</div>
+                                </div>
+                                <div class="connection-node platform">
+                                    <i class="fas fa-desktop"></i>
+                                    <span>Electrode Platform</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="platform-info">
+                            <div class="section-badge">
+                                <i class="fas fa-desktop"></i>
+                                <span>Software Platform</span>
+                                <div class="status-indicator">
+                                    <div class="status-dot online"></div>
+                                    <span>Active</span>
+                                </div>
+                            </div>
+                            
+                            <h2>Complete Microgrid Management Platform</h2>
+                            <p>
+                                Electrode is a comprehensive <strong>software platform</strong> designed specifically 
+                                for microgrid owners to monitor and manage their smart controller. Get 
+                                <span class="highlight-text">real-time visibility</span> into energy token trading, 
+                                track all incoming and outgoing requests, and view system activity in an 
+                                organized, user-friendly interface.
+                            </p>
+                            
+                            <div class="platform-capabilities">
+                                <div class="capability-item">
+                                    <i class="fas fa-eye"></i>
+                                    <div class="capability-content">
+                                        <h4>Real-time Visibility</h4>
+                                        <p>Monitor your microgrid's performance, energy production, and consumption with live data updates</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="capability-item">
+                                    <i class="fas fa-coins"></i>
+                                    <div class="capability-content">
+                                        <h4>Energy Token Trading</h4>
+                                        <p>Automated buying and selling of energy tokens based on supply, demand, and market conditions</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="capability-item">
+                                    <i class="fas fa-route"></i>
+                                    <div class="capability-content">
+                                        <h4>Request Tracking</h4>
+                                        <p>Complete visibility into all incoming and outgoing energy requests and transactions</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="capability-item">
+                                    <i class="fas fa-list-alt"></i>
+                                    <div class="capability-content">
+                                        <h4>System Activity</h4>
+                                        <p>Organized view of all system activities, alerts, and operational status in one interface</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="platform-stats">
+                                <div class="platform-stat">
+                                    <div class="stat-value">100ms</div>
+                                    <div class="stat-label">Response Time</div>
+                                </div>
+                                <div class="platform-stat">
+                                    <div class="stat-value">24/7</div>
+                                    <div class="stat-label">Availability</div>
+                                </div>
+                                <div class="platform-stat">
+                                    <div class="stat-value">5s</div>
+                                    <div class="stat-label">Data Updates</div>
+                                </div>
+                                <div class="platform-stat">
+                                    <div class="stat-value">99.9%</div>
+                                    <div class="stat-label">Uptime SLA</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-                    <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.03); border-radius: 0.5rem;">
-                        <i class="fas fa-server" style="font-size: 2rem; margin-bottom: 0.5rem; color: #10b981;"></i>
-                        <div style="font-size: 0.875rem; color: #94a3b8;">Application</div>
-                        <div style="font-weight: 600; color: #10b981;">Online</div>
+            </section>
+
+            <!-- Token Trading Section -->
+            <section id="token-trading" class="token-trading">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Energy Token Trading Ecosystem</h2>
+                        <p class="section-subtitle">
+                            Automated energy trading that maximizes your microgrid's profitability through intelligent token management
+                        </p>
                     </div>
-                    <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.03); border-radius: 0.5rem;">
-                        <i class="fas fa-chart-bar" style="font-size: 2rem; margin-bottom: 0.5rem; color: #10b981;"></i>
-                        <div style="font-size: 0.875rem; color: #94a3b8;">Monitoring</div>
-                        <div style="font-weight: 600; color: #10b981;">Active</div>
-                    </div>
-                    <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.03); border-radius: 0.5rem;">
-                        <i class="fas fa-bolt" style="font-size: 2rem; margin-bottom: 0.5rem; color: #10b981;"></i>
-                        <div style="font-size: 0.875rem; color: #94a3b8;">Energy Systems</div>
-                        <div style="font-weight: 600; color: #10b981;">Operational</div>
+                    
+                    <div class="token-trading-content">
+                        <div class="trading-process">
+                            <div class="process-step" data-step="1">
+                                <div class="step-icon">
+                                    <i class="fas fa-solar-panel"></i>
+                                </div>
+                                <div class="step-content">
+                                    <h3>Energy Generation</h3>
+                                    <p>Your microgrid generates excess renewable energy from solar panels, wind turbines, or other sources. The Electrode platform continuously monitors production levels and identifies surplus energy available for trading.</p>
+                                    <div class="step-details">
+                                        <span class="detail-item"><i class="fas fa-bolt"></i> Real-time generation tracking</span>
+                                        <span class="detail-item"><i class="fas fa-chart-area"></i> Surplus calculation</span>
+                                        <span class="detail-item"><i class="fas fa-clock"></i> 5-second monitoring intervals</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="process-step" data-step="2">
+                                <div class="step-icon">
+                                    <i class="fas fa-coins"></i>
+                                </div>
+                                <div class="step-content">
+                                    <h3>Token Creation</h3>
+                                    <p>Excess energy is automatically converted into tradeable energy tokens. Each token represents 1 kWh of verified clean energy with blockchain-secured provenance and smart contract automation.</p>
+                                    <div class="step-details">
+                                        <span class="detail-item"><i class="fas fa-shield-alt"></i> Blockchain verification</span>
+                                        <span class="detail-item"><i class="fas fa-file-contract"></i> Smart contracts</span>
+                                        <span class="detail-item"><i class="fas fa-certificate"></i> Clean energy certification</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="process-step" data-step="3">
+                                <div class="step-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div class="step-content">
+                                    <h3>Automated Trading</h3>
+                                    <p>The Electrode platform automatically matches your energy tokens with buyers in the local energy market. AI algorithms optimize pricing based on demand, weather patterns, and grid conditions.</p>
+                                    <div class="step-details">
+                                        <span class="detail-item"><i class="fas fa-robot"></i> AI-driven pricing</span>
+                                        <span class="detail-item"><i class="fas fa-users"></i> Local market matching</span>
+                                        <span class="detail-item"><i class="fas fa-trending-up"></i> Dynamic pricing optimization</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="process-step" data-step="4">
+                                <div class="step-icon">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                </div>
+                                <div class="step-content">
+                                    <h3>Revenue Generation</h3>
+                                    <p>Completed trades generate immediate revenue credited to your account. Track earnings, analyze trading performance, and receive detailed reports on your microgrid's profitability through the platform dashboard.</p>
+                                    <div class="step-details">
+                                        <span class="detail-item"><i class="fas fa-credit-card"></i> Instant payments</span>
+                                        <span class="detail-item"><i class="fas fa-chart-line"></i> Performance analytics</span>
+                                        <span class="detail-item"><i class="fas fa-file-invoice-dollar"></i> Detailed reporting</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="trading-benefits">
+                            <h3>Why Trade Energy Tokens?</h3>
+                            <div class="benefits-grid">
+                                <div class="benefit-card">
+                                    <div class="benefit-icon">
+                                        <i class="fas fa-piggy-bank"></i>
+                                    </div>
+                                    <h4>Passive Income</h4>
+                                    <p>Generate revenue from excess renewable energy automatically, turning your microgrid into a profit center</p>
+                                    <div class="benefit-stat">Up to ₹16,600/month</div>
+                                </div>
+
+                                <div class="benefit-card">
+                                    <div class="benefit-icon">
+                                        <i class="fas fa-leaf"></i>
+                                    </div>
+                                    <h4>Environmental Impact</h4>
+                                    <p>Promote clean energy adoption by making renewable energy more accessible to your community</p>
+                                    <div class="benefit-stat">100% Clean Energy</div>
+                                </div>
+
+                                <div class="benefit-card">
+                                    <div class="benefit-icon">
+                                        <i class="fas fa-network-wired"></i>
+                                    </div>
+                                    <h4>Grid Stability</h4>
+                                    <p>Support local grid stability by providing distributed energy resources when and where needed</p>
+                                    <div class="benefit-stat">Local Market</div>
+                                </div>
+
+                                <div class="benefit-card">
+                                    <div class="benefit-icon">
+                                        <i class="fas fa-rocket"></i>
+                                    </div>
+                                    <h4>ROI Acceleration</h4>
+                                    <p>Accelerate return on investment for your renewable energy system through energy trading revenue under India's Net Metering policies</p>
+                                    <div class="benefit-stat">3-4 Year Payback</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="trading-marketplace">
+                            <h3>Energy Trading Marketplace</h3>
+                            <div class="marketplace-visual">
+                                <div class="market-participants">
+                                    <div class="participant seller">
+                                        <div class="participant-icon">
+                                            <i class="fas fa-home"></i>
+                                        </div>
+                                        <div class="participant-label">Energy Sellers</div>
+                                        <div class="participant-count">278 Active</div>
+                                    </div>
+                                    
+                                    <div class="market-center">
+                                        <div class="center-icon">
+                                            <i class="fas fa-exchange-alt"></i>
+                                        </div>
+                                        <div class="center-label">Electrode Exchange</div>
+                                        <div class="live-stats">
+                                            <div class="stat">
+                                                <span class="value">2,847</span>
+                                                <span class="label">Tokens/Day</span>
+                                            </div>
+                                            <div class="stat">
+                                                <span class="value">₹10.0</span>
+                                                <span class="label">Avg Price</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="participant buyer">
+                                        <div class="participant-icon">
+                                            <i class="fas fa-building"></i>
+                                        </div>
+                                        <div class="participant-label">Energy Buyers</div>
+                                        <div class="participant-count">142 Active</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="trading-flows">
+                                    <div class="flow-line sell-flow"></div>
+                                    <div class="flow-line buy-flow"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="start-trading">
+                            <div class="start-trading-content">
+                                <h3>Start Trading Energy Tokens Today</h3>
+                                <p>Join the energy revolution and start generating passive income from your renewable energy system. 
+                                   Connect your microgrid to the Electrode platform and begin automated trading in minutes.</p>
+                                
+                                <div class="trading-actions">
+                                    <a href="dashboard-working.html" class="btn btn-primary btn-large">
+                                        <i class="fas fa-coins"></i>
+                                        Start Trading Now
+                                    </a>
+                                    <button class="btn btn-secondary btn-large" onclick="scrollToSection('monitoring')">
+                                        <i class="fas fa-chart-line"></i>
+                                        View Live Trading
+                                    </button>
+                                </div>
+                                
+                                <div class="trading-features">
+                                    <div class="trading-feature">
+                                        <i class="fas fa-robot"></i>
+                                        <span>Automated Trading</span>
+                                    </div>
+                                    <div class="trading-feature">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <span>Secure Transactions</span>
+                                    </div>
+                                    <div class="trading-feature">
+                                        <i class="fas fa-mobile-alt"></i>
+                                        <span>Mobile Monitoring</span>
+                                    </div>
+                                    <div class="trading-feature">
+                                        <i class="fas fa-money-bill-wave"></i>
+                                        <span>Instant Payments</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
+
+            <!-- Features Section -->
+            <section id="features" class="features">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Intelligent Energy Management</h2>
+                        <p class="section-subtitle">
+                            Advanced features for complete microgrid control and optimization
+                        </p>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Real-time Analytics</h3>
+                            <p>Monitor energy production, consumption, and storage with live data visualization and professional Chart.js integration.</p>
+                            <div class="feature-stats">
+                                <span>5s refresh rate</span>
+                                <span>4 interactive charts</span>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h3>AI Optimization</h3>
+                            <p>Smart algorithms automatically optimize energy flow, load balancing, and peak shaving for maximum efficiency.</p>
+                            <div class="feature-stats">
+                                <span>Auto load balancing</span>
+                                <span>Peak shaving</span>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-solar-panel"></i>
+                            </div>
+                            <h3>Renewable Integration</h3>
+                            <p>Seamlessly integrate solar panels, wind turbines, and battery storage with intelligent energy management.</p>
+                            <div class="feature-stats">
+                                <span>Multi-source support</span>
+                                <span>Smart switching</span>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3>Responsive Design</h3>
+                            <p>Access your microgrid from anywhere with a beautiful, responsive interface that works on all devices.</p>
+                            <div class="feature-stats">
+                                <span>Mobile optimized</span>
+                                <span>60fps animations</span>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Enterprise Security</h3>
+                            <p>Production-ready security with rate limiting, CORS protection, and comprehensive monitoring.</p>
+                            <div class="feature-stats">
+                                <span>Rate limiting</span>
+                                <span>24/7 monitoring</span>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <h3>Emergency Control</h3>
+                            <p>Instant emergency shutdown capabilities with visual warnings and automated safety procedures.</p>
+                            <div class="feature-stats">
+                                <span>One-click shutdown</span>
+                                <span>Safety protocols</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Monitoring Section -->
+            <section id="monitoring" class="monitoring">
+                <div class="container">
+                    <div class="monitoring-content">
+                        <div class="monitoring-text">
+                            <h2>Professional Monitoring Stack</h2>
+                            <p>
+                                Complete observability with <strong>Prometheus</strong> time-series metrics collection 
+                                running natively on the Raspberry Pi controller, <strong>Grafana</strong> dashboards for 
+                                advanced visualization, and intelligent real-time alerting. Monitor energy production, 
+                                consumption, battery levels, system efficiency, and hardware health with 
+                                <span class="highlight-text">sub-second precision</span> from anywhere in the world.
+                            </p>
+                            
+                            <div class="monitoring-features">
+                                <div class="monitoring-item">
+                                    <i class="fas fa-chart-bar"></i>
+                                    <div>
+                                        <h4>Grafana Dashboards</h4>
+                                        <p>Beautiful real-time visualizations with custom energy metrics</p>
+                                    </div>
+                                </div>
+                                <div class="monitoring-item">
+                                    <i class="fas fa-database"></i>
+                                    <div>
+                                        <h4>Prometheus Metrics</h4>
+                                        <p>Comprehensive metrics collection and long-term storage</p>
+                                    </div>
+                                </div>
+                                <div class="monitoring-item">
+                                    <i class="fas fa-bell"></i>
+                                    <div>
+                                        <h4>Smart Alerts</h4>
+                                        <p>Proactive monitoring with configurable alert rules</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="monitoring-actions">
+                                <a href="http://localhost:3000" class="btn btn-outline" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Open Grafana
+                                </a>
+                                <a href="http://localhost:9090" class="btn btn-outline" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Open Prometheus
+                                </a>
+                                <a href="system-status.html" class="btn btn-accent">
+                                    <i class="fas fa-heartbeat"></i>
+                                    System Status
+                                </a>
+                                <button class="btn btn-secondary" onclick="window.smartgridUtils?.checkSystemStatus()">
+                                    <i class="fas fa-check-circle"></i>
+                                    Quick Health Check
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="monitoring-visual">
+                            <div class="dashboard-preview">
+                                <div class="dashboard-header">
+                                    <div class="dashboard-controls">
+                                        <div class="control"></div>
+                                        <div class="control"></div>
+                                        <div class="control"></div>
+                                    </div>
+                                    <span>Electrode Monitoring Dashboard</span>
+                                </div>
+                                <div class="dashboard-content">
+                                    <div class="chart-placeholder">
+                                        <div class="chart-line"></div>
+                                        <div class="chart-line"></div>
+                                        <div class="chart-line"></div>
+                                    </div>
+                                    <div class="metrics-grid">
+                                        <div class="metric-card">
+                                            <div class="metric-value">₹12,950</div>
+                                            <div class="metric-label">Revenue</div>
+                                        </div>
+                                        <div class="metric-card">
+                                            <div class="metric-value">89</div>
+                                            <div class="metric-label">Active Trades</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section id="about" class="about">
+                <div class="container">
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h2>Enterprise-Grade Platform Architecture</h2>
+                            <p>
+                                <strong>Electrode</strong> is the next generation software platform for intelligent 
+                                microgrid management and energy token trading. Built with <span class="highlight-text">cloud-native 
+                                architecture</span>, it delivers scalable energy management capabilities with enterprise security, 
+                                real-time analytics, and automated trading algorithms that maximize your energy ROI.
+                            </p>
+                            
+                            <div class="about-highlights">
+                                <div class="highlight-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Real-time energy token trading with blockchain verification</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>AI-powered pricing optimization for maximum profitability</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Advanced analytics with predictive market insights</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Enterprise security with multi-layer authentication</span>
+                                </div>
+                            </div>
+                            
+                            <div class="tech-stack">
+                                <h4>Platform Technology</h4>
+                                <div class="tech-items">
+                                    <span class="tech-item">Node.js</span>
+                                    <span class="tech-item">React</span>
+                                    <span class="tech-item">Blockchain</span>
+                                    <span class="tech-item">WebSocket</span>
+                                    <span class="tech-item">AI/ML</span>
+                                    <span class="tech-item">Kubernetes</span>
+                                    <span class="tech-item">Cloud Native</span>
+                                    <span class="tech-item">API Gateway</span>
+                                </div>
+                            </div>
+                            
+                            <div class="live-metrics">
+                                <h4>Live Trading Metrics</h4>
+                                <div class="metric-row">
+                                    <span class="metric-name">Active Trades:</span>
+                                    <span class="metric-value" id="active-trades">89</span>
+                                </div>
+                                <div class="metric-row">
+                                    <span class="metric-name">Tokens Traded:</span>
+                                    <span class="metric-value" id="tokens-traded">1,247</span>
+                                </div>
+                                <div class="metric-row">
+                                    <span class="metric-name">Revenue Today:</span>
+                                    <span class="metric-value" id="revenue-today">₹13,015</span>
+                                </div>
+                                <div class="metric-row">
+                                    <span class="metric-name">Platform Uptime:</span>
+                                    <span class="metric-value" id="platform-uptime">99.9%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="about-stats">
+                            <div class="stat-card">
+                                <div class="stat-number">500+</div>
+                                <div class="stat-description">Connected Microgrids</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">24/7</div>
+                                <div class="stat-description">Trading Engine</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">75ms</div>
+                                <div class="stat-description">Response Time</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">99.9%</div>
+                                <div class="stat-description">Platform Uptime</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
-    </div>
 
-    <script>
-        class ElectrodeDashboard {
-            constructor() {
-                this.priceChart = null;
-                this.init();
-            }
-
-            async init() {
-                console.log('🚀 Initializing Electrode Dashboard...');
-                
-                // Show loading screen
-                this.showLoading();
-                
-                // Initialize components
-                await this.sleep(2000); // Simulate loading time
-                this.initializeChart();
-                this.startRealTimeUpdates();
-                
-                // Hide loading screen
-                this.hideLoading();
-                
-                console.log('✅ Dashboard initialized successfully!');
-            }
-
-            showLoading() {
-                const loadingScreen = document.getElementById('loadingScreen');
-                loadingScreen.style.display = 'flex';
-            }
-
-            hideLoading() {
-                const loadingScreen = document.getElementById('loadingScreen');
-                setTimeout(() => {
-                    loadingScreen.classList.add('hidden');
-                    setTimeout(() => {
-                        loadingScreen.style.display = 'none';
-                    }, 500);
-                }, 1000);
-            }
-
-            sleep(ms) {
-                return new Promise(resolve => setTimeout(resolve, ms));
-            }
-
-            initializeChart() {
-                const ctx = document.getElementById('priceChart').getContext('2d');
-                
-                // Generate sample data
-                const labels = [];
-                const data = [];
-                const now = new Date();
-                
-                for (let i = 23; i >= 0; i--) {
-                    const time = new Date(now.getTime() - (i * 60 * 60 * 1000));
-                    labels.push(time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }));
-                    data.push(9.96 + Math.random() * 1.66); // Price between ₹9.96 and ₹11.62
-                }
-
-                this.priceChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            label: 'Energy Price (₹/kWh)',
-                            data: data,
-                            borderColor: 'rgb(6, 182, 212)',
-                            backgroundColor: 'rgba(6, 182, 212, 0.1)',
-                            borderWidth: 2,
-                            fill: true,
-                            tension: 0.4
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: false
-                            }
-                        },
-                        scales: {
-                            x: {
-                                grid: {
-                                    color: 'rgba(255, 255, 255, 0.1)'
-                                },
-                                ticks: {
-                                    color: '#94a3b8'
-                                }
-                            },
-                            y: {
-                                grid: {
-                                    color: 'rgba(255, 255, 255, 0.1)'
-                                },
-                                ticks: {
-                                    color: '#94a3b8',
-                                    callback: function(value) {
-                                        return '₹' + value.toFixed(2);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-
-            startRealTimeUpdates() {
-                setInterval(() => {
-                    this.updateValues();
-                    this.updateChart();
-                }, 5000);
-            }
-
-            updateValues() {                // Simulate real-time price updates
-                const basePrice = 10.38;
-                const variation = (Math.random() - 0.5) * 0.83;
-                const newPrice = Math.max(8.30, basePrice + variation);
-
-                document.getElementById('currentPrice').textContent = '₹' + newPrice.toFixed(2);
-                
-                // Update other values slightly
-                const portfolioValue = parseFloat(document.getElementById('portfolioValueMain').textContent.replace('₹', '').replace(',', ''));
-                const change = (Math.random() - 0.5) * 830;
-                document.getElementById('portfolioValueMain').textContent = '₹' + Math.floor(portfolioValue + change).toLocaleString('en-IN');
-            }
-
-            updateChart() {
-                if (this.priceChart) {
-                    const newPrice = 9.96 + Math.random() * 1.66;
-                    const newTime = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-                    
-                    this.priceChart.data.labels.push(newTime);
-                    this.priceChart.data.datasets[0].data.push(newPrice);
-                    
-                    // Keep only last 24 data points
-                    if (this.priceChart.data.labels.length > 24) {
-                        this.priceChart.data.labels.shift();
-                        this.priceChart.data.datasets[0].data.shift();
-                    }
-                    
-                    this.priceChart.update('none');
-                }
-            }
-
-            addActivity(type, title, desc, value) {
-                const feed = document.getElementById('activityFeed');
-                const item = document.createElement('div');
-                item.className = 'activity-item';
-                
-                const icons = {
-                    trade: 'fas fa-handshake',
-                    energy: 'fas fa-bolt',
-                    alert: 'fas fa-bell'
-                };
-                
-                item.innerHTML = `
-                    <div class="activity-icon">
-                        <i class="${icons[type] || 'fas fa-info'}"></i>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <div class="electrode-logo">
+                                <div class="logo-particle"></div>
+                                <div class="logo-particle"></div>
+                                <div class="logo-particle"></div>
+                            </div>
+                            <span>Electrode</span>
+                        </div>
+                        <p>The complete energy token trading and microgrid management platform</p>
                     </div>
-                    <div class="activity-content">
-                        <div class="activity-title">${title}</div>
-                        <div class="activity-desc">${desc}</div>
+                    
+                    <div class="footer-links">
+                        <div class="footer-section">
+                            <h4>Platform</h4>
+                            <ul>
+                                <li><a href="dashboard-working.html">Trading Dashboard</a></li>
+                                <li><a href="system-status.html">System Status</a></li>
+                                <li><a href="#platform">Platform Features</a></li>
+                                <li><a href="#token-trading">Token Trading</a></li>
+                                <li><a href="/health" target="_blank">Health Check</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-section">
+                            <h4>Resources</h4>
+                            <ul>
+                                <li><a href="COMPLETE_DOCUMENTATION.md" target="_blank">Platform Guide</a></li>
+                                <li><a href="/api-docs" target="_blank">API Documentation</a></li>
+                                <li><a href="#about">About Electrode</a></li>
+                                <li><a href="#monitoring">Monitoring</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-section">
+                            <h4>Connect</h4>
+                            <div class="social-links">
+                                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="activity-value">${value}</div>
-                `;
+                </div>
                 
-                feed.insertBefore(item, feed.firstChild);
-                
-                // Keep only last 5 activities
-                while (feed.children.length > 5) {
-                    feed.removeChild(feed.lastChild);
-                }
-            }
-        }
+                <div class="footer-bottom">
+                    <div class="footer-metrics">
+                        <span class="footer-metric">
+                            <i class="fas fa-coins"></i>
+                            Live Token Trading
+                        </span>
+                        <span class="footer-metric">
+                            <i class="fas fa-shield-alt"></i>
+                            99.9% Platform Uptime
+                        </span>
+                        <span class="footer-metric">
+                            <i class="fas fa-robot"></i>
+                            AI-Powered Trading
+                        </span>
+                        <span class="footer-metric">
+                            <i class="fas fa-bolt"></i>
+                            100ms Response Time
+                        </span>
+                    </div>
+                    <p>&copy; 2025 Electrode Platform. Advanced energy token trading and microgrid management.</p>
+                </div>
+            </div>
+        </footer>
 
-        // Global functions
-        function refreshChart() {
-            console.log('Refreshing chart...');
-            if (window.dashboard && window.dashboard.priceChart) {
-                window.dashboard.updateChart();
-            }
-        }
+        <!-- Back to Top -->
+        <button class="back-to-top" id="backToTop">
+            <i class="fas fa-chevron-up"></i>
+        </button>
 
-        function simulateTrade(type) {
-            const amount = Math.floor(Math.random() * 50) + 10;
-            const price = (0.120 + Math.random() * 0.020).toFixed(3);
-            const value = (amount * price).toFixed(2);
-            
-            if (type === 'buy') {
-                window.dashboard.addActivity('trade', 'Buy Order Executed', `Bought ${amount} tokens at ₹${price}/kWh`, `-₹${value}`);
-            } else {
-                window.dashboard.addActivity('trade', 'Sell Order Executed', `Sold ${amount} tokens at $${price}/kWh`, `+$${value}`);
-            }
-            
-            console.log(`${type} trade simulated: ${amount} tokens at $${price}`);
-        }
-
-        // Initialize dashboard when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            window.dashboard = new ElectrodeDashboard();
-        });
-    </script>
-</body>
+        <!-- Scripts -->
+        <script src="assets/js/microgrid-index.js?v=1116-enhanced"></script>
+    </body>
 </html>
