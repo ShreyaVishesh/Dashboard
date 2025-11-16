@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ Electrode - Energy Trading Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f1f5f9;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            grid-template-rows: auto 1fr;
+            min-height: 100vh;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-content {
+            text-align: center;
+        }
+
+        .loading-logo {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        .loading-text {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #06b6d4, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .progress-bar {
+            width: 300px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #06b6d4, #10b981);
+            width: 0%;
+            animation: loading 3s ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes loading {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 100%; }
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem 0;
+            grid-row: 1 / -1;
+        }
+
+        .sidebar-header {
+            padding: 0 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            background: linear-gradient(45deg, #06b6d4, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 0 1rem;
+        }
+
+        .nav-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: #94a3b8;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: rgba(6, 182, 212, 0.1);
+            color: #06b6d4;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            backdrop-filter: blur(20px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(6, 182, 212, 0.1);
+        }
+
+        .stat-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-icon {
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(45deg, #06b6d4, #10b981);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .stat-title {
+            font-size: 0.875rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #f1f5f9;
+        }
+
+        .stat-change {
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        .stat-change.positive {
+            color: #10b981;
+        }
+
+        .stat-change.negative {
+            color: #ef4444;
+        }
+
+        .widget-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .widget {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .widget-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .widget-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #06b6d4, #10b981);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+
+        .activity-feed {
+            space-y: 1rem;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .activity-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: linear-gradient(45deg, #06b6d4, #10b981);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-title {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .activity-desc {
+            font-size: 0.875rem;
+            color: #94a3b8;
+        }
+
+        .activity-value {
+            font-weight: 600;
+            color: #10b981;
+        }
+
+        .trading-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .trade-btn {
+            padding: 1rem;
+            border: 2px solid transparent;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .trade-btn.buy {
+            background: linear-gradient(45deg, #10b981, #059669);
+            color: white;
+        }
+
+        .trade-btn.sell {
+            background: linear-gradient(45deg, #ef4444, #dc2626);
+            color: white;
+        }
+
+        .trade-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .widget-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">⚡</div>
+            <div class="loading-text">Electrode</div>
+            <div class="loading-text" style="font-size: 1rem; margin-bottom: 2rem;">Initializing Energy Trading Platform...</div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">⚡</span>
+                    <span>Electrode</span>
+                </div>
+            </div>
+            <nav>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#overview" class="nav-link active">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Overview</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#trading" class="nav-link">
+                            <i class="fas fa-coins"></i>
+                            <span>Trading</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#portfolio" class="nav-link">
+                            <i class="fas fa-wallet"></i>
+                            <span>Portfolio</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#analytics" class="nav-link">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Analytics</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/system-status.html" class="nav-link">
+                            <i class="fas fa-cog"></i>
+                            <span>System Status</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1>Energy Trading Dashboard</h1>
+            </div>
+            <div class="header-right">
+                <div class="header-stat">
+                    <i class="fas fa-coins"></i>
+                    <span id="tokenCount">1,247 Tokens</span>
+                </div>
+                <div class="header-stat">
+                    <i class="fas fa-dollar-sign"></i>
+                    <span id="portfolioValue">₹1,03,572</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <div>
+                            <div class="stat-title">Portfolio Value</div>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="portfolioValueMain">₹1,03,572</div>
+                    <div class="stat-change positive">+5.2% today</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div>
+                            <div class="stat-title">Energy Generated</div>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="energyGenerated">12.8 kWh</div>
+                    <div class="stat-change positive">+89 tokens today</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <div class="stat-title">Daily Revenue</div>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="dailyRevenue">₹13,014</div>
+                    <div class="stat-change positive">+12.4% from yesterday</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">
+                            <i class="fas fa-tag"></i>
+                        </div>
+                        <div>
+                            <div class="stat-title">Current Price</div>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="currentPrice">₹10.38</div>
+                    <div class="stat-change positive">+2.1% per token</div>
+                </div>
+            </div>
+
+            <!-- Widget Grid -->
+            <div class="widget-grid">
+                <!-- Trading Chart -->
+                <div class="widget">
+                    <div class="widget-header">
+                        <h3 class="widget-title">Live Price Chart</h3>
+                        <button class="btn" onclick="refreshChart()">
+                            <i class="fas fa-sync"></i> Refresh
+                        </button>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="priceChart"></canvas>
+                    </div>
+                    <div class="trading-panel">
+                        <button class="trade-btn buy" onclick="simulateTrade('buy')">
+                            <i class="fas fa-arrow-up"></i> Buy Energy
+                        </button>
+                        <button class="trade-btn sell" onclick="simulateTrade('sell')">
+                            <i class="fas fa-arrow-down"></i> Sell Energy
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Activity Feed -->
+                <div class="widget">
+                    <div class="widget-header">
+                        <h3 class="widget-title">Recent Activity</h3>
+                    </div>
+                    <div class="activity-feed" id="activityFeed">
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Trade Executed</div>
+                                <div class="activity-desc">Sold 50 tokens at market rate</div>
+                            </div>
+                            <div class="activity-value">+₹523</div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Energy Generated</div>
+                                <div class="activity-desc">Solar panels produced 25 kWh</div>
+                            </div>
+                            <div class="activity-value">+25 tokens</div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-trending-up"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Price Alert</div>
+                                <div class="activity-desc">Token price increased 8%</div>
+                            </div>
+                            <div class="activity-value">₹10.38</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Status Widget -->
+            <div class="widget">
+                <div class="widget-header">
+                    <h3 class="widget-title">System Monitoring</h3>
+                    <button class="btn" onclick="window.open('/system-status.html', '_blank')">
+                        <i class="fas fa-external-link-alt"></i> Full Status
+                    </button>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.03); border-radius: 0.5rem;">
+                        <i class="fas fa-server" style="font-size: 2rem; margin-bottom: 0.5rem; color: #10b981;"></i>
+                        <div style="font-size: 0.875rem; color: #94a3b8;">Application</div>
+                        <div style="font-weight: 600; color: #10b981;">Online</div>
+                    </div>
+                    <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.03); border-radius: 0.5rem;">
+                        <i class="fas fa-chart-bar" style="font-size: 2rem; margin-bottom: 0.5rem; color: #10b981;"></i>
+                        <div style="font-size: 0.875rem; color: #94a3b8;">Monitoring</div>
+                        <div style="font-weight: 600; color: #10b981;">Active</div>
+                    </div>
+                    <div style="text-align: center; padding: 1rem; background: rgba(255,255,255,0.03); border-radius: 0.5rem;">
+                        <i class="fas fa-bolt" style="font-size: 2rem; margin-bottom: 0.5rem; color: #10b981;"></i>
+                        <div style="font-size: 0.875rem; color: #94a3b8;">Energy Systems</div>
+                        <div style="font-weight: 600; color: #10b981;">Operational</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        class ElectrodeDashboard {
+            constructor() {
+                this.priceChart = null;
+                this.init();
+            }
+
+            async init() {
+                console.log('🚀 Initializing Electrode Dashboard...');
+                
+                // Show loading screen
+                this.showLoading();
+                
+                // Initialize components
+                await this.sleep(2000); // Simulate loading time
+                this.initializeChart();
+                this.startRealTimeUpdates();
+                
+                // Hide loading screen
+                this.hideLoading();
+                
+                console.log('✅ Dashboard initialized successfully!');
+            }
+
+            showLoading() {
+                const loadingScreen = document.getElementById('loadingScreen');
+                loadingScreen.style.display = 'flex';
+            }
+
+            hideLoading() {
+                const loadingScreen = document.getElementById('loadingScreen');
+                setTimeout(() => {
+                    loadingScreen.classList.add('hidden');
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                    }, 500);
+                }, 1000);
+            }
+
+            sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+
+            initializeChart() {
+                const ctx = document.getElementById('priceChart').getContext('2d');
+                
+                // Generate sample data
+                const labels = [];
+                const data = [];
+                const now = new Date();
+                
+                for (let i = 23; i >= 0; i--) {
+                    const time = new Date(now.getTime() - (i * 60 * 60 * 1000));
+                    labels.push(time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }));
+                    data.push(9.96 + Math.random() * 1.66); // Price between ₹9.96 and ₹11.62
+                }
+
+                this.priceChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Energy Price (₹/kWh)',
+                            data: data,
+                            borderColor: 'rgb(6, 182, 212)',
+                            backgroundColor: 'rgba(6, 182, 212, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.1)'
+                                },
+                                ticks: {
+                                    color: '#94a3b8'
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.1)'
+                                },
+                                ticks: {
+                                    color: '#94a3b8',
+                                    callback: function(value) {
+                                        return '₹' + value.toFixed(2);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            startRealTimeUpdates() {
+                setInterval(() => {
+                    this.updateValues();
+                    this.updateChart();
+                }, 5000);
+            }
+
+            updateValues() {                // Simulate real-time price updates
+                const basePrice = 10.38;
+                const variation = (Math.random() - 0.5) * 0.83;
+                const newPrice = Math.max(8.30, basePrice + variation);
+
+                document.getElementById('currentPrice').textContent = '₹' + newPrice.toFixed(2);
+                
+                // Update other values slightly
+                const portfolioValue = parseFloat(document.getElementById('portfolioValueMain').textContent.replace('₹', '').replace(',', ''));
+                const change = (Math.random() - 0.5) * 830;
+                document.getElementById('portfolioValueMain').textContent = '₹' + Math.floor(portfolioValue + change).toLocaleString('en-IN');
+            }
+
+            updateChart() {
+                if (this.priceChart) {
+                    const newPrice = 9.96 + Math.random() * 1.66;
+                    const newTime = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                    
+                    this.priceChart.data.labels.push(newTime);
+                    this.priceChart.data.datasets[0].data.push(newPrice);
+                    
+                    // Keep only last 24 data points
+                    if (this.priceChart.data.labels.length > 24) {
+                        this.priceChart.data.labels.shift();
+                        this.priceChart.data.datasets[0].data.shift();
+                    }
+                    
+                    this.priceChart.update('none');
+                }
+            }
+
+            addActivity(type, title, desc, value) {
+                const feed = document.getElementById('activityFeed');
+                const item = document.createElement('div');
+                item.className = 'activity-item';
+                
+                const icons = {
+                    trade: 'fas fa-handshake',
+                    energy: 'fas fa-bolt',
+                    alert: 'fas fa-bell'
+                };
+                
+                item.innerHTML = `
+                    <div class="activity-icon">
+                        <i class="${icons[type] || 'fas fa-info'}"></i>
+                    </div>
+                    <div class="activity-content">
+                        <div class="activity-title">${title}</div>
+                        <div class="activity-desc">${desc}</div>
+                    </div>
+                    <div class="activity-value">${value}</div>
+                `;
+                
+                feed.insertBefore(item, feed.firstChild);
+                
+                // Keep only last 5 activities
+                while (feed.children.length > 5) {
+                    feed.removeChild(feed.lastChild);
+                }
+            }
+        }
+
+        // Global functions
+        function refreshChart() {
+            console.log('Refreshing chart...');
+            if (window.dashboard && window.dashboard.priceChart) {
+                window.dashboard.updateChart();
+            }
+        }
+
+        function simulateTrade(type) {
+            const amount = Math.floor(Math.random() * 50) + 10;
+            const price = (0.120 + Math.random() * 0.020).toFixed(3);
+            const value = (amount * price).toFixed(2);
+            
+            if (type === 'buy') {
+                window.dashboard.addActivity('trade', 'Buy Order Executed', `Bought ${amount} tokens at ₹${price}/kWh`, `-₹${value}`);
+            } else {
+                window.dashboard.addActivity('trade', 'Sell Order Executed', `Sold ${amount} tokens at $${price}/kWh`, `+$${value}`);
+            }
+            
+            console.log(`${type} trade simulated: ${amount} tokens at $${price}`);
+        }
+
+        // Initialize dashboard when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            window.dashboard = new ElectrodeDashboard();
+        });
+    </script>
+</body>
+</html>

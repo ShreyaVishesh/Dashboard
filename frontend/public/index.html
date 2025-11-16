@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Electrode - The complete software platform for microgrid owners to monitor, manage, and trade energy tokens with real-time visibility">
+        <meta name="keywords" content="electrode, microgrid management, energy token trading, smart controller, energy monitoring, microgrid software, india renewable energy">
+        
+        <title>Electrode | Microgrid Management & Energy Token Trading Platform</title>
+        
+        <!-- External Libraries -->
+        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+        
+        <!-- Custom Styles -->
+        <link rel="stylesheet" href="assets/css/microgrid-index.css?v=1116-enhanced">
+        
+        <!-- Favicon -->
+        <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    </head>
+    <body>
+        <!-- Loading Screen -->
+        <div id="loading-screen">
+            <div class="loader">
+                <div class="electrode-pulse"></div>
+                <div class="loading-text">Connecting to Electrode Platform...</div>
+                <div class="loading-progress">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="navbar" id="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <div class="electrode-logo">
+                        <div class="logo-particle"></div>
+                        <div class="logo-particle"></div>
+                        <div class="logo-particle"></div>
+                    </div>
+                    <span class="logo-text">Electrode</span>
+                </div>
+                
+                <div class="nav-menu" id="nav-menu">
+                    <div class="nav-close" id="nav-close">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <ul class="nav-links">
+                        <li><a href="#home" class="nav-link active">Home</a></li>
+                        <li><a href="#platform" class="nav-link">Platform</a></li>
+                        <li><a href="#token-trading" class="nav-link">Token Trading</a></li>
+                        <li><a href="#monitoring" class="nav-link">Monitoring</a></li>
+                        <li><a href="#features" class="nav-link">Features</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                        <li><a href="dashboard-working.html" class="nav-link dashboard-link">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a></li>
+                        <li><a href="system-status.html" class="nav-link status-link">
+                            <i class="fas fa-heartbeat"></i> System Status
+                        </a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-controls">
+                    <div class="theme-toggle" id="theme-toggle">
+                        <i class="fas fa-sun sun-icon"></i>
+                        <i class="fas fa-moon moon-icon"></i>
+                    </div>
+                    <div class="nav-toggle" id="nav-toggle">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Hero Section -->
+            <section id="home" class="hero">
+                <div class="hero-background">
+                    <div class="token-particles"></div>
+                    <div class="energy-grid"></div>
+                    <div class="trading-waves"></div>
+                </div>
+                
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="hero-badge">
+                            <i class="fas fa-coins"></i>
+                            <span>Energy Token Trading Platform</span>
+                        </div>
+                        <h1 class="hero-title">
+                            <span class="gradient-text">Electrode</span>
+                            <div class="title-subtitle">Your Microgrid Command Center</div>
+                        </h1>
+                        <p class="hero-subtitle">
+                            <span class="status-indicator-inline">
+                                <span class="status-dot online"></span>
+                                Live Trading Active
+                            </span>
+                            Supporting India's renewable energy mission with complete software platform designed for microgrid owners to 
+                            <strong class="highlight-text">monitor and manage</strong> their smart controller. 
+                            Real-time visibility into <strong class="highlight-text">energy token trading</strong>, 
+                            comprehensive tracking of incoming and outgoing requests, and all system activity 
+                            displayed in an organized, user-friendly interface.
+                        </p>
+                        
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <div class="stat-icon"><i class="fas fa-coins"></i></div>
+                                <div class="stat-value" data-target="2847">0</div>
+                                <div class="stat-label">Energy Tokens Traded</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon"><i class="fas fa-exchange-alt"></i></div>
+                                <div class="stat-value" data-target="142">0</div>
+                                <div class="stat-label">Active Transactions</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon"><i class="fas fa-network-wired"></i></div>
+                                <div class="stat-value" data-target="278">0</div>
+                                <div class="stat-label">Connected Microgrids</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                                <div class="stat-value" data-target="99.9">0</div>
+                                <div class="stat-label">% Platform Uptime</div>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-actions">
+                            <a href="dashboard-working.html" class="btn btn-primary">
+                                <i class="fas fa-rocket"></i>
+                                Launch Platform
+                            </a>
+                            <button class="btn btn-secondary" onclick="scrollToSection('token-trading')">
+                                <i class="fas fa-coins"></i>
+                                Start Trading
+                            </button>
+                            <a href="system-status.html" class="btn btn-accent">
+                                <i class="fas fa-chart-line"></i>
+                                Live Monitoring
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-visual">
+                        <div class="platform-mockup">
+                            <div class="mockup-window">
+                                <div class="window-header">
+                                    <div class="window-controls">
+                                        <div class="control red"></div>
+                                        <div class="control yellow"></div>
+                                        <div class="control green"></div>
+                                    </div>
+                                    <div class="window-title">Electrode Trading Platform</div>
+                                </div>
+                                
+                                <div class="mockup-content">
+                                    <div class="trading-panel">
+                                        <div class="panel-header">
+                                            <h4>Energy Token Trading</h4>
+                                            <span class="live-indicator">
+                                                <span class="pulse-dot"></span>
+                                                LIVE
+                                            </span>
+                                        </div>
+                                        
+                                        <div class="trading-stats">
+                                            <div class="trading-stat">
+                                                <div class="stat-icon green"><i class="fas fa-arrow-up"></i></div>
+                                                <div class="stat-info">
+                                                    <div class="stat-number">+247</div>
+                                                    <div class="stat-desc">Tokens Sold</div>
+                                                </div>
+                                            </div>
+                                            <div class="trading-stat">
+                                                <div class="stat-icon blue"><i class="fas fa-arrow-down"></i></div>
+                                                <div class="stat-info">
+                                                    <div class="stat-number">+156</div>
+                                                    <div class="stat-desc">Tokens Bought</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="price-chart">
+                                            <div class="chart-line"></div>
+                                            <div class="chart-points">
+                                                <div class="point active"></div>
+                                                <div class="point"></div>
+                                                <div class="point"></div>
+                                                <div class="point"></div>
+                                                <div class="point"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="activity-feed">
+                                        <div class="feed-header">Recent Activity</div>
+                                        <div class="activity-item">
+                                            <div class="activity-icon"><i class="fas fa-bolt"></i></div>
+                                            <div class="activity-text">Energy surplus detected - Auto-selling 47 tokens</div>
+                                            <div class="activity-time">2m ago</div>
+                                        </div>
+                                        <div class="activity-item">
+                                            <div class="activity-icon"><i class="fas fa-handshake"></i></div>
+                                            <div class="activity-text">Trade completed with Microgrid #23</div>
+                                            <div class="activity-time">5m ago</div>
+                                        </div>
+                                        <div class="activity-item">
+                                            <div class="activity-icon"><i class="fas fa-shield-alt"></i></div>
+                                            <div class="activity-text">Smart contract verified successfully</div>
+                                            <div class="activity-time">8m ago</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="floating-cards">
+                                <div class="float-card card-1">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Real-time Analytics</span>
+                                </div>
+                                <div class="float-card card-2">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Secure Trading</span>
+                                </div>
+                                <div class="float-card card-3">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>Mobile Ready</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Platform Overview Section -->
+            <section id="platform" class="platform-section">
+                <div class="container">
+                    <div class="platform-content">
+                        <div class="platform-visual">
+                            <div class="software-interface">
+                                <div class="interface-screens">
+                                    <div class="screen monitoring active">
+                                        <div class="screen-header">
+                                            <div class="screen-title">Real-time Monitoring</div>
+                                            <div class="screen-status">
+                                                <span class="status-dot pulse"></span>
+                                                Live
+                                            </div>
+                                        </div>
+                                        <div class="monitoring-grid">
+                                            <div class="monitor-widget">
+                                                <div class="widget-icon"><i class="fas fa-bolt"></i></div>
+                                                <div class="widget-value">2.4kW</div>
+                                                <div class="widget-label">Current Generation</div>
+                                            </div>
+                                            <div class="monitor-widget">
+                                                <div class="widget-icon"><i class="fas fa-coins"></i></div>
+                                                <div class="widget-value">47</div>
+                                                <div class="widget-label">Active Tokens</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="screen trading">
+                                        <div class="screen-header">
+                                            <div class="screen-title">Token Trading</div>
+                                            <div class="screen-status">
+                                                <span class="status-dot success"></span>
+                                                Automated
+                                            </div>
+                                        </div>
+                                        <div class="trading-activity">
+                                            <div class="trade-item">
+                                                <div class="trade-type sell">SELL</div>
+                                                <div class="trade-amount">15 tokens</div>
+                                                <div class="trade-price">₹10.0/kWh</div>
+                                            </div>
+                                            <div class="trade-item">
+                                                <div class="trade-type buy">BUY</div>
+                                                <div class="trade-amount">8 tokens</div>
+                                                <div class="trade-price">₹8.3/kWh</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="interface-tabs">
+                                    <div class="tab active" data-screen="monitoring">
+                                        <i class="fas fa-chart-line"></i>
+                                        <span>Monitor</span>
+                                    </div>
+                                    <div class="tab" data-screen="trading">
+                                        <i class="fas fa-exchange-alt"></i>
+                                        <span>Trade</span>
+                                    </div>
+                                    <div class="tab" data-screen="activity">
+                                        <i class="fas fa-history"></i>
+                                        <span>Activity</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="data-connections">
+                                <div class="connection-node microgrid">
+                                    <i class="fas fa-plug"></i>
+                                    <span>Smart Controller</span>
+                                </div>
+                                <div class="connection-flow">
+                                    <div class="flow-line"></div>
+                                    <div class="flow-data">Real-time Data</div>
+                                </div>
+                                <div class="connection-node platform">
+                                    <i class="fas fa-desktop"></i>
+                                    <span>Electrode Platform</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="platform-info">
+                            <div class="section-badge">
+                                <i class="fas fa-desktop"></i>
+                                <span>Software Platform</span>
+                                <div class="status-indicator">
+                                    <div class="status-dot online"></div>
+                                    <span>Active</span>
+                                </div>
+                            </div>
+                            
+                            <h2>Complete Microgrid Management Platform</h2>
+                            <p>
+                                Electrode is a comprehensive <strong>software platform</strong> designed specifically 
+                                for microgrid owners to monitor and manage their smart controller. Get 
+                                <span class="highlight-text">real-time visibility</span> into energy token trading, 
+                                track all incoming and outgoing requests, and view system activity in an 
+                                organized, user-friendly interface.
+                            </p>
+                            
+                            <div class="platform-capabilities">
+                                <div class="capability-item">
+                                    <i class="fas fa-eye"></i>
+                                    <div class="capability-content">
+                                        <h4>Real-time Visibility</h4>
+                                        <p>Monitor your microgrid's performance, energy production, and consumption with live data updates</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="capability-item">
+                                    <i class="fas fa-coins"></i>
+                                    <div class="capability-content">
+                                        <h4>Energy Token Trading</h4>
+                                        <p>Automated buying and selling of energy tokens based on supply, demand, and market conditions</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="capability-item">
+                                    <i class="fas fa-route"></i>
+                                    <div class="capability-content">
+                                        <h4>Request Tracking</h4>
+                                        <p>Complete visibility into all incoming and outgoing energy requests and transactions</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="capability-item">
+                                    <i class="fas fa-list-alt"></i>
+                                    <div class="capability-content">
+                                        <h4>System Activity</h4>
+                                        <p>Organized view of all system activities, alerts, and operational status in one interface</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="platform-stats">
+                                <div class="platform-stat">
+                                    <div class="stat-value">100ms</div>
+                                    <div class="stat-label">Response Time</div>
+                                </div>
+                                <div class="platform-stat">
+                                    <div class="stat-value">24/7</div>
+                                    <div class="stat-label">Availability</div>
+                                </div>
+                                <div class="platform-stat">
+                                    <div class="stat-value">5s</div>
+                                    <div class="stat-label">Data Updates</div>
+                                </div>
+                                <div class="platform-stat">
+                                    <div class="stat-value">99.9%</div>
+                                    <div class="stat-label">Uptime SLA</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Token Trading Section -->
+            <section id="token-trading" class="token-trading">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Energy Token Trading Ecosystem</h2>
+                        <p class="section-subtitle">
+                            Automated energy trading that maximizes your microgrid's profitability through intelligent token management
+                        </p>
+                    </div>
+                    
+                    <div class="token-trading-content">
+                        <div class="trading-process">
+                            <div class="process-step" data-step="1">
+                                <div class="step-icon">
+                                    <i class="fas fa-solar-panel"></i>
+                                </div>
+                                <div class="step-content">
+                                    <h3>Energy Generation</h3>
+                                    <p>Your microgrid generates excess renewable energy from solar panels, wind turbines, or other sources. The Electrode platform continuously monitors production levels and identifies surplus energy available for trading.</p>
+                                    <div class="step-details">
+                                        <span class="detail-item"><i class="fas fa-bolt"></i> Real-time generation tracking</span>
+                                        <span class="detail-item"><i class="fas fa-chart-area"></i> Surplus calculation</span>
+                                        <span class="detail-item"><i class="fas fa-clock"></i> 5-second monitoring intervals</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="process-step" data-step="2">
+                                <div class="step-icon">
+                                    <i class="fas fa-coins"></i>
+                                </div>
+                                <div class="step-content">
+                                    <h3>Token Creation</h3>
+                                    <p>Excess energy is automatically converted into tradeable energy tokens. Each token represents 1 kWh of verified clean energy with blockchain-secured provenance and smart contract automation.</p>
+                                    <div class="step-details">
+                                        <span class="detail-item"><i class="fas fa-shield-alt"></i> Blockchain verification</span>
+                                        <span class="detail-item"><i class="fas fa-file-contract"></i> Smart contracts</span>
+                                        <span class="detail-item"><i class="fas fa-certificate"></i> Clean energy certification</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="process-step" data-step="3">
+                                <div class="step-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div class="step-content">
+                                    <h3>Automated Trading</h3>
+                                    <p>The Electrode platform automatically matches your energy tokens with buyers in the local energy market. AI algorithms optimize pricing based on demand, weather patterns, and grid conditions.</p>
+                                    <div class="step-details">
+                                        <span class="detail-item"><i class="fas fa-robot"></i> AI-driven pricing</span>
+                                        <span class="detail-item"><i class="fas fa-users"></i> Local market matching</span>
+                                        <span class="detail-item"><i class="fas fa-trending-up"></i> Dynamic pricing optimization</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="process-step" data-step="4">
+                                <div class="step-icon">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                </div>
+                                <div class="step-content">
+                                    <h3>Revenue Generation</h3>
+                                    <p>Completed trades generate immediate revenue credited to your account. Track earnings, analyze trading performance, and receive detailed reports on your microgrid's profitability through the platform dashboard.</p>
+                                    <div class="step-details">
+                                        <span class="detail-item"><i class="fas fa-credit-card"></i> Instant payments</span>
+                                        <span class="detail-item"><i class="fas fa-chart-line"></i> Performance analytics</span>
+                                        <span class="detail-item"><i class="fas fa-file-invoice-dollar"></i> Detailed reporting</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="trading-benefits">
+                            <h3>Why Trade Energy Tokens?</h3>
+                            <div class="benefits-grid">
+                                <div class="benefit-card">
+                                    <div class="benefit-icon">
+                                        <i class="fas fa-piggy-bank"></i>
+                                    </div>
+                                    <h4>Passive Income</h4>
+                                    <p>Generate revenue from excess renewable energy automatically, turning your microgrid into a profit center</p>
+                                    <div class="benefit-stat">Up to ₹16,600/month</div>
+                                </div>
+
+                                <div class="benefit-card">
+                                    <div class="benefit-icon">
+                                        <i class="fas fa-leaf"></i>
+                                    </div>
+                                    <h4>Environmental Impact</h4>
+                                    <p>Promote clean energy adoption by making renewable energy more accessible to your community</p>
+                                    <div class="benefit-stat">100% Clean Energy</div>
+                                </div>
+
+                                <div class="benefit-card">
+                                    <div class="benefit-icon">
+                                        <i class="fas fa-network-wired"></i>
+                                    </div>
+                                    <h4>Grid Stability</h4>
+                                    <p>Support local grid stability by providing distributed energy resources when and where needed</p>
+                                    <div class="benefit-stat">Local Market</div>
+                                </div>
+
+                                <div class="benefit-card">
+                                    <div class="benefit-icon">
+                                        <i class="fas fa-rocket"></i>
+                                    </div>
+                                    <h4>ROI Acceleration</h4>
+                                    <p>Accelerate return on investment for your renewable energy system through energy trading revenue under India's Net Metering policies</p>
+                                    <div class="benefit-stat">3-4 Year Payback</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="trading-marketplace">
+                            <h3>Energy Trading Marketplace</h3>
+                            <div class="marketplace-visual">
+                                <div class="market-participants">
+                                    <div class="participant seller">
+                                        <div class="participant-icon">
+                                            <i class="fas fa-home"></i>
+                                        </div>
+                                        <div class="participant-label">Energy Sellers</div>
+                                        <div class="participant-count">278 Active</div>
+                                    </div>
+                                    
+                                    <div class="market-center">
+                                        <div class="center-icon">
+                                            <i class="fas fa-exchange-alt"></i>
+                                        </div>
+                                        <div class="center-label">Electrode Exchange</div>
+                                        <div class="live-stats">
+                                            <div class="stat">
+                                                <span class="value">2,847</span>
+                                                <span class="label">Tokens/Day</span>
+                                            </div>
+                                            <div class="stat">
+                                                <span class="value">₹10.0</span>
+                                                <span class="label">Avg Price</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="participant buyer">
+                                        <div class="participant-icon">
+                                            <i class="fas fa-building"></i>
+                                        </div>
+                                        <div class="participant-label">Energy Buyers</div>
+                                        <div class="participant-count">142 Active</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="trading-flows">
+                                    <div class="flow-line sell-flow"></div>
+                                    <div class="flow-line buy-flow"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="start-trading">
+                            <div class="start-trading-content">
+                                <h3>Start Trading Energy Tokens Today</h3>
+                                <p>Join the energy revolution and start generating passive income from your renewable energy system. 
+                                   Connect your microgrid to the Electrode platform and begin automated trading in minutes.</p>
+                                
+                                <div class="trading-actions">
+                                    <a href="dashboard-working.html" class="btn btn-primary btn-large">
+                                        <i class="fas fa-coins"></i>
+                                        Start Trading Now
+                                    </a>
+                                    <button class="btn btn-secondary btn-large" onclick="scrollToSection('monitoring')">
+                                        <i class="fas fa-chart-line"></i>
+                                        View Live Trading
+                                    </button>
+                                </div>
+                                
+                                <div class="trading-features">
+                                    <div class="trading-feature">
+                                        <i class="fas fa-robot"></i>
+                                        <span>Automated Trading</span>
+                                    </div>
+                                    <div class="trading-feature">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <span>Secure Transactions</span>
+                                    </div>
+                                    <div class="trading-feature">
+                                        <i class="fas fa-mobile-alt"></i>
+                                        <span>Mobile Monitoring</span>
+                                    </div>
+                                    <div class="trading-feature">
+                                        <i class="fas fa-money-bill-wave"></i>
+                                        <span>Instant Payments</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section id="features" class="features">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Intelligent Energy Management</h2>
+                        <p class="section-subtitle">
+                            Advanced features for complete microgrid control and optimization
+                        </p>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Real-time Analytics</h3>
+                            <p>Monitor energy production, consumption, and storage with live data visualization and professional Chart.js integration.</p>
+                            <div class="feature-stats">
+                                <span>5s refresh rate</span>
+                                <span>4 interactive charts</span>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h3>AI Optimization</h3>
+                            <p>Smart algorithms automatically optimize energy flow, load balancing, and peak shaving for maximum efficiency.</p>
+                            <div class="feature-stats">
+                                <span>Auto load balancing</span>
+                                <span>Peak shaving</span>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-solar-panel"></i>
+                            </div>
+                            <h3>Renewable Integration</h3>
+                            <p>Seamlessly integrate solar panels, wind turbines, and battery storage with intelligent energy management.</p>
+                            <div class="feature-stats">
+                                <span>Multi-source support</span>
+                                <span>Smart switching</span>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3>Responsive Design</h3>
+                            <p>Access your microgrid from anywhere with a beautiful, responsive interface that works on all devices.</p>
+                            <div class="feature-stats">
+                                <span>Mobile optimized</span>
+                                <span>60fps animations</span>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Enterprise Security</h3>
+                            <p>Production-ready security with rate limiting, CORS protection, and comprehensive monitoring.</p>
+                            <div class="feature-stats">
+                                <span>Rate limiting</span>
+                                <span>24/7 monitoring</span>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <h3>Emergency Control</h3>
+                            <p>Instant emergency shutdown capabilities with visual warnings and automated safety procedures.</p>
+                            <div class="feature-stats">
+                                <span>One-click shutdown</span>
+                                <span>Safety protocols</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Monitoring Section -->
+            <section id="monitoring" class="monitoring">
+                <div class="container">
+                    <div class="monitoring-content">
+                        <div class="monitoring-text">
+                            <h2>Professional Monitoring Stack</h2>
+                            <p>
+                                Complete observability with <strong>Prometheus</strong> time-series metrics collection 
+                                running natively on the Raspberry Pi controller, <strong>Grafana</strong> dashboards for 
+                                advanced visualization, and intelligent real-time alerting. Monitor energy production, 
+                                consumption, battery levels, system efficiency, and hardware health with 
+                                <span class="highlight-text">sub-second precision</span> from anywhere in the world.
+                            </p>
+                            
+                            <div class="monitoring-features">
+                                <div class="monitoring-item">
+                                    <i class="fas fa-chart-bar"></i>
+                                    <div>
+                                        <h4>Grafana Dashboards</h4>
+                                        <p>Beautiful real-time visualizations with custom energy metrics</p>
+                                    </div>
+                                </div>
+                                <div class="monitoring-item">
+                                    <i class="fas fa-database"></i>
+                                    <div>
+                                        <h4>Prometheus Metrics</h4>
+                                        <p>Comprehensive metrics collection and long-term storage</p>
+                                    </div>
+                                </div>
+                                <div class="monitoring-item">
+                                    <i class="fas fa-bell"></i>
+                                    <div>
+                                        <h4>Smart Alerts</h4>
+                                        <p>Proactive monitoring with configurable alert rules</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="monitoring-actions">
+                                <a href="http://localhost:3000" class="btn btn-outline" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Open Grafana
+                                </a>
+                                <a href="http://localhost:9090" class="btn btn-outline" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Open Prometheus
+                                </a>
+                                <a href="system-status.html" class="btn btn-accent">
+                                    <i class="fas fa-heartbeat"></i>
+                                    System Status
+                                </a>
+                                <button class="btn btn-secondary" onclick="window.smartgridUtils?.checkSystemStatus()">
+                                    <i class="fas fa-check-circle"></i>
+                                    Quick Health Check
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="monitoring-visual">
+                            <div class="dashboard-preview">
+                                <div class="dashboard-header">
+                                    <div class="dashboard-controls">
+                                        <div class="control"></div>
+                                        <div class="control"></div>
+                                        <div class="control"></div>
+                                    </div>
+                                    <span>Electrode Monitoring Dashboard</span>
+                                </div>
+                                <div class="dashboard-content">
+                                    <div class="chart-placeholder">
+                                        <div class="chart-line"></div>
+                                        <div class="chart-line"></div>
+                                        <div class="chart-line"></div>
+                                    </div>
+                                    <div class="metrics-grid">
+                                        <div class="metric-card">
+                                            <div class="metric-value">₹12,950</div>
+                                            <div class="metric-label">Revenue</div>
+                                        </div>
+                                        <div class="metric-card">
+                                            <div class="metric-value">89</div>
+                                            <div class="metric-label">Active Trades</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section id="about" class="about">
+                <div class="container">
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h2>Enterprise-Grade Platform Architecture</h2>
+                            <p>
+                                <strong>Electrode</strong> is the next generation software platform for intelligent 
+                                microgrid management and energy token trading. Built with <span class="highlight-text">cloud-native 
+                                architecture</span>, it delivers scalable energy management capabilities with enterprise security, 
+                                real-time analytics, and automated trading algorithms that maximize your energy ROI.
+                            </p>
+                            
+                            <div class="about-highlights">
+                                <div class="highlight-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Real-time energy token trading with blockchain verification</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>AI-powered pricing optimization for maximum profitability</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Advanced analytics with predictive market insights</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Enterprise security with multi-layer authentication</span>
+                                </div>
+                            </div>
+                            
+                            <div class="tech-stack">
+                                <h4>Platform Technology</h4>
+                                <div class="tech-items">
+                                    <span class="tech-item">Node.js</span>
+                                    <span class="tech-item">React</span>
+                                    <span class="tech-item">Blockchain</span>
+                                    <span class="tech-item">WebSocket</span>
+                                    <span class="tech-item">AI/ML</span>
+                                    <span class="tech-item">Kubernetes</span>
+                                    <span class="tech-item">Cloud Native</span>
+                                    <span class="tech-item">API Gateway</span>
+                                </div>
+                            </div>
+                            
+                            <div class="live-metrics">
+                                <h4>Live Trading Metrics</h4>
+                                <div class="metric-row">
+                                    <span class="metric-name">Active Trades:</span>
+                                    <span class="metric-value" id="active-trades">89</span>
+                                </div>
+                                <div class="metric-row">
+                                    <span class="metric-name">Tokens Traded:</span>
+                                    <span class="metric-value" id="tokens-traded">1,247</span>
+                                </div>
+                                <div class="metric-row">
+                                    <span class="metric-name">Revenue Today:</span>
+                                    <span class="metric-value" id="revenue-today">₹13,015</span>
+                                </div>
+                                <div class="metric-row">
+                                    <span class="metric-name">Platform Uptime:</span>
+                                    <span class="metric-value" id="platform-uptime">99.9%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="about-stats">
+                            <div class="stat-card">
+                                <div class="stat-number">500+</div>
+                                <div class="stat-description">Connected Microgrids</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">24/7</div>
+                                <div class="stat-description">Trading Engine</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">75ms</div>
+                                <div class="stat-description">Response Time</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">99.9%</div>
+                                <div class="stat-description">Platform Uptime</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <div class="electrode-logo">
+                                <div class="logo-particle"></div>
+                                <div class="logo-particle"></div>
+                                <div class="logo-particle"></div>
+                            </div>
+                            <span>Electrode</span>
+                        </div>
+                        <p>The complete energy token trading and microgrid management platform</p>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <div class="footer-section">
+                            <h4>Platform</h4>
+                            <ul>
+                                <li><a href="dashboard-working.html">Trading Dashboard</a></li>
+                                <li><a href="system-status.html">System Status</a></li>
+                                <li><a href="#platform">Platform Features</a></li>
+                                <li><a href="#token-trading">Token Trading</a></li>
+                                <li><a href="/health" target="_blank">Health Check</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-section">
+                            <h4>Resources</h4>
+                            <ul>
+                                <li><a href="COMPLETE_DOCUMENTATION.md" target="_blank">Platform Guide</a></li>
+                                <li><a href="/api-docs" target="_blank">API Documentation</a></li>
+                                <li><a href="#about">About Electrode</a></li>
+                                <li><a href="#monitoring">Monitoring</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-section">
+                            <h4>Connect</h4>
+                            <div class="social-links">
+                                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <div class="footer-metrics">
+                        <span class="footer-metric">
+                            <i class="fas fa-coins"></i>
+                            Live Token Trading
+                        </span>
+                        <span class="footer-metric">
+                            <i class="fas fa-shield-alt"></i>
+                            99.9% Platform Uptime
+                        </span>
+                        <span class="footer-metric">
+                            <i class="fas fa-robot"></i>
+                            AI-Powered Trading
+                        </span>
+                        <span class="footer-metric">
+                            <i class="fas fa-bolt"></i>
+                            100ms Response Time
+                        </span>
+                    </div>
+                    <p>&copy; 2025 Electrode Platform. Advanced energy token trading and microgrid management.</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Back to Top -->
+        <button class="back-to-top" id="backToTop">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+
+        <!-- Scripts -->
+        <script src="assets/js/microgrid-index.js?v=1116-enhanced"></script>
+    </body>
+</html>

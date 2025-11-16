@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/Users/shreyavishesh/Desktop/explore/logs/.decd890370b37418f29d4a54e1df5957b19abe6c-audit.json",
+    "files": [
+        {
+            "date": 1763230886966,
+            "name": "/Users/shreyavishesh/Desktop/explore/logs/combined-2025-11-15.log",
+            "hash": "970f373407e70641bbaa164069f2e5af7e438f54c56b48db3f6654b5c3893ebf"
+        },
+        {
+            "date": 1763231622860,
+            "name": "/Users/shreyavishesh/Desktop/explore/logs/combined-2025-11-16.log",
+            "hash": "6757e4e5f96b3f40ed1e0c1c5dae89c251a8330ab72bb32b77e123fe77530660"
+        }
+    ],
+    "hashType": "sha256"
+}
