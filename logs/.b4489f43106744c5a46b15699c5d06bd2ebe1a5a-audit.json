@@ -14,6 +14,11 @@
             "date": 1763231723211,
             "name": "/Users/shreyavishesh/Desktop/explore/logs/error-2025-11-16.log",
             "hash": "d7f99ff799e200fabd3a259295475ff90d82d5d7024907cf376dd26612454799"
+        },
+        {
+            "date": 1763400729728,
+            "name": "/Users/shreyavishesh/Desktop/explore/logs/error-2025-11-17.log",
+            "hash": "fa9f60c97882ba8ff12778552da296d1b55d98a41ed316dd8a7b32255221fb24"
         }
     ],
     "hashType": "sha256"

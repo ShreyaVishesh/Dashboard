@@ -303,7 +303,8 @@
         }
 
         .activity-feed {
-            space-y: 1rem;
+            max-height: 400px;
+            overflow-y: auto;
         }
 
         .activity-item {
@@ -314,6 +315,39 @@
             background: rgba(255, 255, 255, 0.03);
             border-radius: 0.5rem;
             margin-bottom: 0.75rem;
+            border-left: 3px solid transparent;
+            animation: slideIn 0.3s ease-out;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+                border-left-color: transparent;
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+                border-left-color: #06b6d4;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+        }
+
+        .activity-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-left-color: #10b981;
+            transform: translateX(5px);
         }
 
         .activity-icon {
@@ -530,7 +564,7 @@
                 <div class="widget">
                     <div class="widget-header">
                         <h3 class="widget-title">Live Price Chart</h3>
-                        <button class="btn" onclick="refreshChart()">
+                        <button class="btn" id="refreshChartBtn">
                             <i class="fas fa-sync"></i> Refresh
                         </button>
                     </div>
@@ -538,10 +572,10 @@
                         <canvas id="priceChart"></canvas>
                     </div>
                     <div class="trading-panel">
-                        <button class="trade-btn buy" onclick="simulateTrade('buy')">
+                        <button class="trade-btn buy" id="buyBtn">
                             <i class="fas fa-arrow-up"></i> Buy Energy
                         </button>
-                        <button class="trade-btn sell" onclick="simulateTrade('sell')">
+                        <button class="trade-btn sell" id="sellBtn">
                             <i class="fas fa-arrow-down"></i> Sell Energy
                         </button>
                     </div>
@@ -591,7 +625,7 @@
             <div class="widget">
                 <div class="widget-header">
                     <h3 class="widget-title">System Monitoring</h3>
-                    <button class="btn" onclick="window.open('/system-status.html', '_blank')">
+                    <button class="btn" id="systemStatusBtn">
                         <i class="fas fa-external-link-alt"></i> Full Status
                     </button>
                 </div>
@@ -617,6 +651,31 @@
     </div>
 
     <script>
+        // Simple test function to verify activity feed is working
+        window.testAddActivity = function() {
+            console.log('Test function called');
+            const feed = document.getElementById('activityFeed');
+            if (!feed) {
+                console.error('Activity feed not found!');
+                return;
+            }
+            
+            const testItem = document.createElement('div');
+            testItem.className = 'activity-item';
+            testItem.innerHTML = `
+                <div class="activity-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="activity-content">
+                    <div class="activity-title">TEST Activity</div>
+                    <div class="activity-desc">This is a test message</div>
+                </div>
+                <div class="activity-value">TEST</div>
+            `;
+            feed.insertBefore(testItem, feed.firstChild);
+            console.log('Test activity added successfully!');
+        };
+
         class ElectrodeDashboard {
             constructor() {
                 this.priceChart = null;
@@ -759,7 +818,14 @@
             }
 
             addActivity(type, title, desc, value) {
+                console.log('addActivity called:', { type, title, desc, value });
+                
                 const feed = document.getElementById('activityFeed');
+                if (!feed) {
+                    console.error('Activity feed element not found!');
+                    return;
+                }
+                
                 const item = document.createElement('div');
                 item.className = 'activity-item';
                 
@@ -769,6 +835,9 @@
                     alert: 'fas fa-bell'
                 };
                 
+                const now = new Date();
+                const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                
                 item.innerHTML = `
                     <div class="activity-icon">
                         <i class="${icons[type] || 'fas fa-info'}"></i>
@@ -776,16 +845,26 @@
                     <div class="activity-content">
                         <div class="activity-title">${title}</div>
                         <div class="activity-desc">${desc}</div>
+                        <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.25rem;">${timeStr}</div>
                     </div>
                     <div class="activity-value">${value}</div>
                 `;
                 
                 feed.insertBefore(item, feed.firstChild);
+                console.log('Activity item added. Current items count:', feed.children.length);
                 
-                // Keep only last 5 activities
-                while (feed.children.length > 5) {
-                    feed.removeChild(feed.lastChild);
-                }
+                // Add slight delay before removing to make animation visible
+                setTimeout(() => {
+                    // Keep only last 5 activities
+                    while (feed.children.length > 5) {
+                        const lastItem = feed.lastChild;
+                        lastItem.style.animation = 'slideOut 0.3s ease-out';
+                        setTimeout(() => {
+                            feed.removeChild(lastItem);
+                            console.log('Old activity removed. Remaining items:', feed.children.length);
+                        }, 300);
+                    }
+                }, 100);
             }
         }
 
@@ -798,13 +877,25 @@
         }
 
         function simulateTrade(type) {
+            console.log('simulateTrade called with type:', type);
+            console.log('window.dashboard exists:', !!window.dashboard);
+            
+            // Ensure dashboard is initialized
+            if (!window.dashboard) {
+                console.error('Dashboard not initialized yet!');
+                alert('Dashboard is still loading. Please wait a moment and try again.');
+                return;
+            }
+            
             const amount = Math.floor(Math.random() * 50) + 10;
             const price = (0.120 + Math.random() * 0.020).toFixed(3);
             const value = (amount * price).toFixed(2);
             
             if (type === 'buy') {
+                console.log('Adding buy activity:', amount, price, value);
                 window.dashboard.addActivity('trade', 'Buy Order Executed', `Bought ${amount} tokens at ₹${price}/kWh`, `-₹${value}`);
             } else {
+                console.log('Adding sell activity:', amount, price, value);
                 window.dashboard.addActivity('trade', 'Sell Order Executed', `Sold ${amount} tokens at $${price}/kWh`, `+$${value}`);
             }
             
@@ -813,7 +904,43 @@
 
         // Initialize dashboard when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOMContentLoaded event fired');
             window.dashboard = new ElectrodeDashboard();
+            
+            // Attach event listeners (CSP compliant - no inline onclick)
+            const buyBtn = document.getElementById('buyBtn');
+            const sellBtn = document.getElementById('sellBtn');
+            const refreshChartBtn = document.getElementById('refreshChartBtn');
+            const systemStatusBtn = document.getElementById('systemStatusBtn');
+            
+            if (buyBtn) {
+                buyBtn.addEventListener('click', () => simulateTrade('buy'));
+            }
+            
+            if (sellBtn) {
+                sellBtn.addEventListener('click', () => simulateTrade('sell'));
+            }
+            
+            if (refreshChartBtn) {
+                refreshChartBtn.addEventListener('click', () => refreshChart());
+            }
+            
+            if (systemStatusBtn) {
+                systemStatusBtn.addEventListener('click', () => {
+                    window.open('/system-status.html', '_blank');
+                });
+            }
+            
+            // Make addActivity available globally for testing
+            window.addActivityTest = function(type, title, desc, value) {
+                if (window.dashboard) {
+                    window.dashboard.addActivity(type, title, desc, value);
+                } else {
+                    console.error('Dashboard not initialized');
+                }
+            };
+            
+            console.log('Dashboard instance created and ready');
         });
     </script>
 </body>

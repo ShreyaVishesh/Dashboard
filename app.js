@@ -55,11 +55,12 @@ const specs = swaggerJSDoc(swaggerOptions);
 app.use(helmet({
   contentSecurityPolicy: {
     directives: {
-      defaultSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net", "https://unpkg.com"],
-      scriptSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net"],
+      defaultSrc: ["'self'", "https://cdnjs.cloudflare.com", "https://fonts.googleapis.com", "https://cdn.jsdelivr.net"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net", "https://unpkg.com", "https://cdnjs.cloudflare.com", "https://fonts.googleapis.com"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net", "https://unpkg.com", "https://cdnjs.cloudflare.com"],
+      connectSrc: ["'self'", "https://cdnjs.cloudflare.com", "https://fonts.googleapis.com", "https://fonts.gstatic.com", "https://cdn.jsdelivr.net", "https://unpkg.com"],
       imgSrc: ["'self'", "data:", "https:"],
-      fontSrc: ["'self'", "https://cdn.jsdelivr.net", "https://unpkg.com"],
+      fontSrc: ["'self'", "https://cdn.jsdelivr.net", "https://unpkg.com", "https://cdnjs.cloudflare.com", "https://fonts.gstatic.com"],
     },
   },
 }));
@@ -276,7 +277,7 @@ app.get('/', (req, res) => {
 
 // Navigation page route
 app.get('/nav', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend', 'public', 'navigation.html'));
+  res.sendFile(path.join(__dirname, 'frontend', 'public', 'test-nav.html'));
 });
 
 // Test navigation page route
