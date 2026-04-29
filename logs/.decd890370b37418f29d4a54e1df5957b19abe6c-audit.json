@@ -6,19 +6,14 @@
     "auditLog": "/Users/shreyavishesh/Desktop/explore/logs/.decd890370b37418f29d4a54e1df5957b19abe6c-audit.json",
     "files": [
         {
-            "date": 1763230886966,
-            "name": "/Users/shreyavishesh/Desktop/explore/logs/combined-2025-11-15.log",
-            "hash": "970f373407e70641bbaa164069f2e5af7e438f54c56b48db3f6654b5c3893ebf"
+            "date": 1777293517334,
+            "name": "/Users/shreyavishesh/Desktop/explore/logs/combined-2026-04-27.log",
+            "hash": "83278a20b9dffb420b6812b640129a1beec6fd913a8559c9f1464cd9205b963a"
         },
         {
-            "date": 1763231622860,
-            "name": "/Users/shreyavishesh/Desktop/explore/logs/combined-2025-11-16.log",
-            "hash": "6757e4e5f96b3f40ed1e0c1c5dae89c251a8330ab72bb32b77e123fe77530660"
-        },
-        {
-            "date": 1763400729730,
-            "name": "/Users/shreyavishesh/Desktop/explore/logs/combined-2025-11-17.log",
-            "hash": "4dafc3853ede2972a88bea5f98a993e9798cfa8d9477c23f2bb5ea34a93a2ac9"
+            "date": 1777351789877,
+            "name": "/Users/shreyavishesh/Desktop/explore/logs/combined-2026-04-28.log",
+            "hash": "3b6af8a14d1129b626a5f89427d99172ab2606133f69d09e0102122a72f45fd5"
         }
     ],
     "hashType": "sha256"

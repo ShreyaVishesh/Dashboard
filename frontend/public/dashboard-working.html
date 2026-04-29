@@ -887,19 +887,47 @@
                 return;
             }
             
-            const amount = Math.floor(Math.random() * 50) + 10;
-            const price = (0.120 + Math.random() * 0.020).toFixed(3);
-            const value = (amount * price).toFixed(2);
-            
-            if (type === 'buy') {
-                console.log('Adding buy activity:', amount, price, value);
-                window.dashboard.addActivity('trade', 'Buy Order Executed', `Bought ${amount} tokens at ₹${price}/kWh`, `-₹${value}`);
-            } else {
-                console.log('Adding sell activity:', amount, price, value);
-                window.dashboard.addActivity('trade', 'Sell Order Executed', `Sold ${amount} tokens at $${price}/kWh`, `+$${value}`);
-            }
-            
-            console.log(`${type} trade simulated: ${amount} tokens at $${price}`);
+            // Call the API endpoint to record the trade
+            fetch('/api/v1/trade', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ type }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Trade response:', data);
+                
+                if (data.success && data.data) {
+                    const tradeData = data.data;
+                    
+                    if (type === 'buy') {
+                        console.log('Adding buy activity:', tradeData.amount, tradeData.pricePerUnit, tradeData.totalValue);
+                        window.dashboard.addActivity('trade', 'Buy Order Executed', 
+                            `Bought ${tradeData.amount} tokens at ₹${tradeData.pricePerUnit}/kWh`, 
+                            `-₹${tradeData.totalValue}`);
+                    } else {
+                        console.log('Adding sell activity:', tradeData.amount, tradeData.pricePerUnit, tradeData.totalValue);
+                        window.dashboard.addActivity('trade', 'Sell Order Executed', 
+                            `Sold ${tradeData.amount} tokens at ₹${tradeData.pricePerUnit}/kWh`, 
+                            `+₹${tradeData.totalValue}`);
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Trade API call failed:', error);
+                // Fallback to local simulation
+                const amount = Math.floor(Math.random() * 50) + 10;
+                const price = (0.120 + Math.random() * 0.020).toFixed(3);
+                const value = (amount * price).toFixed(2);
+                
+                if (type === 'buy') {
+                    window.dashboard.addActivity('trade', 'Buy Order Executed', `Bought ${amount} tokens at ₹${price}/kWh`, `-₹${value}`);
+                } else {
+                    window.dashboard.addActivity('trade', 'Sell Order Executed', `Sold ${amount} tokens at ₹${price}/kWh`, `+₹${value}`);
+                }
+            });
         }
 
         // Initialize dashboard when DOM is loaded

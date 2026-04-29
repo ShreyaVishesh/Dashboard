@@ -184,7 +184,7 @@
       "targets": [
         {
           "expr": "rate(electrode_operations_total{job=\"electrode-app\"}[5m])",
-          "legendFormat": "Operations/sec - {{operation}}",
+          "legendFormat": "{{operation_type}} - {{status}}",
           "refId": "A"
         }
       ],
@@ -241,7 +241,7 @@
       "targets": [
         {
           "expr": "rate(electrode_operation_duration_seconds_sum{job=\"electrode-app\"}[5m]) / rate(electrode_operation_duration_seconds_count{job=\"electrode-app\"}[5m])",
-          "legendFormat": "Avg Duration - {{operation}}",
+          "legendFormat": "Avg Duration - {{operation_type}}",
           "refId": "A"
         }
       ],

@@ -44,6 +44,64 @@ router.use((req, res, next) => {
 router.use('/monitoring', require('./monitoring'));
 router.use('/analytics', require('./analytics'));
 
+// Trade/Energy Operations Endpoint
+const { electrodeOperationsTotal, electrodeResponseTime } = require('../config/metrics');
+
+router.post('/trade', (req, res) => {
+  const startTime = Date.now();
+  const { type } = req.body; // 'buy' or 'sell'
+  
+  try {
+    // Validate trade type
+    if (!['buy', 'sell'].includes(type)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid trade type. Must be "buy" or "sell"',
+        requestId: req.requestId,
+      });
+    }
+    
+    // Simulate trade operation
+    const amount = Math.floor(Math.random() * 50) + 10;
+    const price = (0.120 + Math.random() * 0.020).toFixed(3);
+    const value = (amount * price).toFixed(2);
+    
+    // Record metrics
+    electrodeOperationsTotal.labels(type, 'success').inc();
+    const duration = (Date.now() - startTime) / 1000;
+    electrodeResponseTime.labels(type).observe(duration);
+    
+    logger.info(`Trade executed: ${type} ${amount} tokens at ₹${price}`, {
+      requestId: req.requestId,
+      tradeType: type,
+      amount,
+      price,
+      value,
+    });
+    
+    res.json({
+      success: true,
+      message: `${type === 'buy' ? 'Buy' : 'Sell'} order executed successfully`,
+      data: {
+        type,
+        amount,
+        pricePerUnit: price,
+        totalValue: value,
+        timestamp: new Date().toISOString(),
+      },
+      requestId: req.requestId,
+    });
+  } catch (error) {
+    electrodeOperationsTotal.labels(type, 'error').inc();
+    logger.error('Trade execution failed', { error: error.message, requestId: req.requestId });
+    res.status(500).json({
+      success: false,
+      message: 'Trade execution failed',
+      requestId: req.requestId,
+    });
+  }
+});
+
 /**
  * @swagger
  * /api/v1:

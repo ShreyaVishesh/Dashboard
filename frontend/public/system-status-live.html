@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ Electrode - System Status (Live)</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f1f5f9;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #06b6d4, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            color: #06b6d4;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        .back-button:hover {
+            background: rgba(6, 182, 212, 0.1);
+            transform: translateX(-5px);
+        }
+
+        .status-overview {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .status-overview h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .overall-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(45deg, #10b981, #059669);
+            padding: 1rem 2rem;
+            border-radius: 2rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .overall-status.warning {
+            background: linear-gradient(45deg, #f59e0b, #d97706);
+        }
+
+        .overall-status.error {
+            background: linear-gradient(45deg, #ef4444, #dc2626);
+        }
+
+        .status-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            background: white;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(6, 182, 212, 0.5);
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .service-name {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .service-icon {
+            color: #06b6d4;
+            font-size: 1.5rem;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.5);
+        }
+
+        .status-badge.warning {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+            border-color: rgba(245, 158, 11, 0.5);
+        }
+
+        .status-badge.error {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border-color: rgba(239, 68, 68, 0.5);
+        }
+
+        .service-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .metric {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+
+        .metric-label {
+            color: #94a3b8;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-value {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #06b6d4;
+        }
+
+        .stats-section {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stats-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #f1f5f9;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #06b6d4;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+            gap: 0.5rem;
+        }
+
+        .loading-spinner {
+            width: 2rem;
+            height: 2rem;
+            border: 3px solid rgba(6, 182, 212, 0.2);
+            border-top-color: #06b6d4;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.5);
+            color: #fecaca;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .live-badge {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </a>
+
+        <div class="header">
+            <h1>⚡ System Status Dashboard <span class="live-badge">LIVE</span></h1>
+            <p>Real-time system health and metrics</p>
+        </div>
+
+        <div id="error-container"></div>
+
+        <div class="status-overview">
+            <h2>Overall System Status</h2>
+            <div id="overall-status" class="overall-status loading">
+                <div class="loading-spinner"></div>
+                <span>Loading...</span>
+            </div>
+        </div>
+
+        <div id="services-container">
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                <span>Fetching service status...</span>
+            </div>
+        </div>
+
+        <div class="stats-section" id="stats-section" style="display: none;">
+            <h3>📊 Performance Metrics</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value" id="cpu-usage">—</div>
+                    <div class="stat-label">CPU Usage</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="memory-usage">—</div>
+                    <div class="stat-label">Memory Usage</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="disk-usage">—</div>
+                    <div class="stat-label">Disk Usage</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="http-requests">—</div>
+                    <div class="stat-label">HTTP Requests</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="active-connections">—</div>
+                    <div class="stat-label">Active Connections</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="error-rate">—</div>
+                    <div class="stat-label">Error Rate</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = '';
+
+        async function fetchSystemStatus() {
+            try {
+                const [healthRes, metricsRes] = await Promise.all([
+                    fetch(`${API_BASE}/api/v1/monitoring/health`),
+                    fetch(`${API_BASE}/api/v1/monitoring/metrics`)
+                ]);
+
+                if (!healthRes.ok || !metricsRes.ok) {
+                    throw new Error('Failed to fetch system status');
+                }
+
+                const healthResponse = await healthRes.json();
+                const metricsResponse = await metricsRes.json();
+
+                // Extract the actual data from the response wrapper
+                const health = healthResponse.data || healthResponse;
+                const metrics = metricsResponse;
+
+                console.log('Health data:', health);
+                console.log('Metrics data:', metrics);
+
+                updateStatusDisplay(health, metrics);
+            } catch (error) {
+                console.error('Error fetching system status:', error);
+                showError('Failed to load system status. Please try again later.');
+            }
+        }
+
+        function updateStatusDisplay(health, metrics) {
+            // Update overall status
+            const overallStatus = health.status === 'healthy' ? 'Operational' : health.status.toUpperCase();
+            const statusClass = health.status === 'healthy' ? '' : (health.status === 'warning' ? 'warning' : 'error');
+            
+            const overallStatusElement = document.getElementById('overall-status');
+            overallStatusElement.className = `overall-status ${statusClass}`;
+            overallStatusElement.innerHTML = `
+                <div class="status-icon"></div>
+                <span>${overallStatus}</span>
+            `;
+
+            // Update services
+            const servicesContainer = document.getElementById('services-container');
+            const servicesHtml = Object.entries(health.services || {}).map(([name, service]) => {
+                const badgeClass = service.status === 'healthy' ? '' : (service.status === 'warning' ? 'warning' : 'error');
+                return `
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-name">
+                                <i class="fas fa-${getServiceIcon(name)} service-icon"></i>
+                                <span>${capitalizeFirst(name)}</span>
+                            </div>
+                            <span class="status-badge ${badgeClass}">${capitalizeFirst(service.status)}</span>
+                        </div>
+                        <div class="service-metrics">
+                            <div class="metric">
+                                <div class="metric-label">Response Time</div>
+                                <div class="metric-value">${Math.round(service.responseTime)}ms</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Last Check</div>
+                                <div class="metric-value">${formatTime(new Date(service.lastCheck))}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            servicesContainer.innerHTML = servicesHtml;
+
+            // Update metrics
+            if (metrics.data) {
+                const data = metrics.data;
+                const statsSection = document.getElementById('stats-section');
+                statsSection.style.display = 'block';
+
+                console.log('System metrics:', data.system);
+                console.log('App metrics:', data.application);
+
+                document.getElementById('cpu-usage').textContent = 
+                    (data.system?.cpu_usage_percent || 0).toFixed(1) + '%';
+                document.getElementById('memory-usage').textContent = 
+                    formatBytes(data.system?.memory_usage_bytes || 0);
+                document.getElementById('disk-usage').textContent = 
+                    (data.system?.disk_usage_percent || 0).toFixed(1) + '%';
+                document.getElementById('http-requests').textContent = 
+                    (data.application?.http_requests_total || 0).toLocaleString();
+                document.getElementById('active-connections').textContent = 
+                    data.application?.active_connections || 0;
+                document.getElementById('error-rate').textContent = 
+                    ((data.application?.error_rate || 0) * 100).toFixed(2) + '%';
+
+                console.log('Metrics updated successfully');
+            } else {
+                console.warn('No metrics data found in response');
+            }
+        }
+
+        function getServiceIcon(service) {
+            const icons = {
+                api: 'server',
+                database: 'database',
+                cache: 'bolt',
+                messaging: 'envelope',
+                storage: 'hdd'
+            };
+            return icons[service] || 'cog';
+        }
+
+        function capitalizeFirst(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+
+        function formatTime(date) {
+            const now = new Date();
+            const diff = Math.floor((now - date) / 1000);
+            
+            if (diff < 60) return 'just now';
+            if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
+            if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
+            return Math.floor(diff / 86400) + 'd ago';
+        }
+
+        function formatBytes(bytes) {
+            if (bytes === 0) return '0 B';
+            const k = 1024;
+            const sizes = ['B', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return (bytes / Math.pow(k, i)).toFixed(2) + ' ' + sizes[i];
+        }
+
+        function showError(message) {
+            const errorContainer = document.getElementById('error-container');
+            errorContainer.innerHTML = `<div class="error-message"><i class="fas fa-exclamation-circle"></i> ${message}</div>`;
+        }
+
+        // Initial fetch
+        fetchSystemStatus();
+
+        // Refresh every 5 seconds
+        setInterval(fetchSystemStatus, 5000);
+
+        console.log('🎯 System Status Dashboard - Live Mode Active');
+        console.log('📊 Real-time metrics enabled');
+    </script>
+</body>
+</html>
